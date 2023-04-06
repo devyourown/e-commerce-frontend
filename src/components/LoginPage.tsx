@@ -9,7 +9,7 @@ import {useNavigate} from "react-router-dom";
 function LoginPage() {
 	const navigate = useNavigate();
   const handlePasswordFind = () => {
-
+	navigate("/findPassword")
   }
 
   const handleSignIn = () => {

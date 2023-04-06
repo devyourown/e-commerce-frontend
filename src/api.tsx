@@ -5,7 +5,7 @@ import error = Simulate.error;
 
 const BASE_URL = 'http://localhost:3000';
 
-export interface LoginInfo {
+export type LoginInfo = {
     email: string;
     password: string;
 }
@@ -46,4 +46,17 @@ export async function signUpApi(singUpInfo : singUpInfo) {
     }
 }
 
+export type FindPasswordInfo = {
+    email : string,
+}
+
+export async function findPasswordApi(findPasswordInfo : FindPasswordInfo) {
+    try {
+        const response: AxiosResponse = await axios.post(`${BASE_URL}/users`, findPasswordInfo); // TODO api 수정 필요
+        return response;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
 
