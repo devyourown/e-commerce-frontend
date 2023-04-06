@@ -10,11 +10,19 @@ export interface LoginInfo {
     password: string;
 }
 
+export enum Gender {
+    Male,
+    Female,
+    Other,
+}
+
 export type singUpInfo = {
     email : string,
     username : string,
     password : string,
     confirmPassword : string,
+    birth? : number,
+    gender : Gender,
 }
 
 
