@@ -6,6 +6,7 @@ function Nav() {
             <Link to={"/"} ><h1>Logo</h1> </Link>
             <ul>
                 <Link to={"/login"}><li>login</li> </Link>
+                <Link to={"/signUp"}><li>sign up</li> </Link>
             </ul>
         </>
     );

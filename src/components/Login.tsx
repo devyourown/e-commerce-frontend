@@ -3,6 +3,10 @@
 import React, {useState} from "react";
 import {loginApi} from "../api";
 import useAsync from "../hooks/useAsync";
+import InputStyles from "./Input.styles";
+import ContainerStyles from "./Container.styles";
+import LabelStyles from "./Label.styles";
+import {ButtonStyles} from "./Button.styles";
 
 function Login() {
 
@@ -50,7 +54,8 @@ function Login() {
 
     return (
         <form className="login-form" onSubmit={handleOnSubmit}>
-            <input
+            <LabelStyles>email</LabelStyles>
+            <InputStyles
                 className="input-field"
                 type="text"
                 name="email"
@@ -58,7 +63,8 @@ function Login() {
                 onChange={handleValuesChange}
                 placeholder="email"
             />
-            <input
+            <LabelStyles>password</LabelStyles>
+            <InputStyles
                 className="input-field"
                 type="password"
                 name="password"
@@ -66,9 +72,9 @@ function Login() {
                 onChange={handleValuesChange}
                 placeholder="password"
             />
-            <button disabled={isLoading} className="login-button">
+            <ButtonStyles disabled={isLoading} className="login-button">
                 로그인
-            </button>
+            </ButtonStyles>
             {loadingError?.message ? <p>loadingError.message</p> : undefined}
         </form>
     )
