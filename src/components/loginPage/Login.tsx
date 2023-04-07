@@ -1,12 +1,13 @@
 //React Component Function
 
 import React, {useState} from "react";
-import {loginApi} from "../api";
-import useAsync from "../hooks/useAsync";
-import InputStyles from "./Input.styles";
-import ContainerStyles from "./Container.styles";
-import LabelStyles from "./Label.styles";
-import {ButtonStyles} from "./Button.styles";
+import {loginApi} from "../../api";
+import useAsync from "../../hooks/useAsync";
+import InputStyles from "../styles/Input.styles";
+import ContainerStyles from "../styles/Container.styles";
+import LabelStyles from "../styles/Label.styles";
+import {ButtonStyles} from "../styles/Button.styles";
+import useTranslate from "../../hooks/useTranslate";
 
 function Login() {
 
@@ -51,10 +52,11 @@ function Login() {
         if (!result) return;
     }
 
+    const translate = useTranslate();
 
     return (
         <form className="login-form" onSubmit={handleOnSubmit}>
-            <LabelStyles>email</LabelStyles>
+            <LabelStyles>{translate("email")}</LabelStyles>
             <InputStyles
                 className="input-field"
                 type="text"
@@ -63,7 +65,7 @@ function Login() {
                 onChange={handleValuesChange}
                 placeholder="email"
             />
-            <LabelStyles>password</LabelStyles>
+            <LabelStyles>{translate("password")}</LabelStyles>
             <InputStyles
                 className="input-field"
                 type="password"
@@ -73,7 +75,7 @@ function Login() {
                 placeholder="password"
             />
             <ButtonStyles disabled={isLoading} className="login-button">
-                로그인
+                {translate("login")}
             </ButtonStyles>
             {loadingError?.message ? <p>loadingError.message</p> : undefined}
         </form>

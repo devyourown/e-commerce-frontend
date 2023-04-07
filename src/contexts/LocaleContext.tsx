@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-interface LocaleContextType {
+type LocaleContextType = {
     locale: string;
     setLocale: (locale: string) => void;
 }

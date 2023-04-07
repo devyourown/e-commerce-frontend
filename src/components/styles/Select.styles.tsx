@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import * as events from "events";
 
 type SelectProps = {
     error?: boolean;
+    onChange?: any;
 };
 
 const SelectStyles = styled.select<SelectProps>`

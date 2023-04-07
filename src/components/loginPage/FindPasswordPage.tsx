@@ -1,7 +1,7 @@
 import React, {useState, MouseEvent} from 'react';
 import {Link} from "react-router-dom";
-import useAsync from "../hooks/useAsync";
-import {findPasswordApi} from "../api";
+import useAsync from "../../hooks/useAsync";
+import {findPasswordApi} from "../../api";
 
 function FindPasswordPage() {
     const [email, setEmail] = useState("");

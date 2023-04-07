@@ -1,11 +1,12 @@
 import React, {useState} from "react";
-import {Gender, signUpApi, singUpInfo} from "../api";
-import useAsync from "../hooks/useAsync";
-import InputStyles from "./Input.styles";
-import LabelStyles from "./Label.styles";
-import {ButtonStyles} from "./Button.styles";
-import SelectStyles from "./Select.styles";
-import ContainerStyles from "./Container.styles";
+import {Gender, signUpApi, singUpInfo} from "../../api";
+import useAsync from "../../hooks/useAsync";
+import InputStyles from "../styles/Input.styles";
+import LabelStyles from "../styles/Label.styles";
+import {ButtonStyles} from "../styles/Button.styles";
+import SelectStyles from "../styles/Select.styles";
+import ContainerStyles from "../styles/Container.styles";
+import useTranslate from "../../hooks/useTranslate";
 
 
 function SignUpPage() {
@@ -61,14 +62,14 @@ function SignUpPage() {
         console.log(`values : ${JSON.stringify(values)}`)
     }
 
-
+    const translate = useTranslate();
 
 
     return (
         <ContainerStyles>
-            <h2>Sign Up</h2>
+            <h2>{translate("sign up")}</h2>
             <form className="signup-form" onSubmit={handleSignUp}>
-                <LabelStyles>email</LabelStyles>
+                <LabelStyles>{translate("email")}</LabelStyles>
                 <InputStyles
                     className="input-field"
                     type="text"
@@ -77,7 +78,7 @@ function SignUpPage() {
                     onChange={handleValuesChange}
                     placeholder="test@test.com"
                 />
-                <LabelStyles>user name</LabelStyles>
+                <LabelStyles>{translate("user name")}</LabelStyles>
                 <InputStyles
                     className="input-field"
                     type="text"
@@ -86,7 +87,7 @@ function SignUpPage() {
                     onChange={handleValuesChange}
                     placeholder="choi wonjun"
                 />
-                <LabelStyles>password</LabelStyles>
+                <LabelStyles>{translate("password")}</LabelStyles>
                 <InputStyles
                     className="input-field"
                     type="password"
@@ -95,7 +96,7 @@ function SignUpPage() {
                     onChange={handleValuesChange}
                     placeholder="password"
                 />
-                <LabelStyles>confirm password</LabelStyles>
+                <LabelStyles>{translate("confirm password")}</LabelStyles>
                 <InputStyles
                     className="input-field"
                     type="password"
@@ -105,27 +106,27 @@ function SignUpPage() {
                     placeholder="password"
                 />
                 <div className={"birth-input"}>
-                    <LabelStyles htmlFor="birth_year">Birth Year:</LabelStyles>
+                    <LabelStyles htmlFor="birth_year">{translate("birth year")}:</LabelStyles>
                     <InputStyles type="number" id="birth_year" name="birth_year" placeholder="YYYY" min="1900" max="9999" required
                            onChange={handleValuesChange}/>
 
-                    <LabelStyles htmlFor="birth_month">Birth Month:</LabelStyles>
+                    <LabelStyles htmlFor="birth_month">{translate("birth month")}:</LabelStyles>
                     <InputStyles type="number" id="birth_month" name="birth_month" placeholder="MM" min="1" max="12" required
                            onChange={handleValuesChange}/>
 
-                    <LabelStyles htmlFor="birth_day">Birth Day:</LabelStyles>
+                    <LabelStyles htmlFor="birth_day">{translate("birth day")}:</LabelStyles>
                     <InputStyles type="number" id="birth_day" name="birth_day" placeholder="DD" min="1" max="31" required
                            onChange={handleValuesChange}/>
                 </div>
                 <div className={"gender-input"} onChange={handleValuesChange}>
-                    <LabelStyles htmlFor="gender">Gender:</LabelStyles>
+                    <LabelStyles htmlFor="gender">{translate("gender")}:</LabelStyles>
                     <SelectStyles id="gender" name="gender">
                         <option value={Gender.Male}>Male</option>
                         <option value={Gender.Female}>Female</option>
                         <option value={Gender.Other}>Other</option>
                     </SelectStyles>
                 </div>
-                <ButtonStyles disabled={isLoading}>Sign Up</ButtonStyles>
+                <ButtonStyles disabled={isLoading}>{translate("sign up")}</ButtonStyles>
                 {loadingError?.message ? <p>loadingError.message</p> : undefined}
             </form>
         </ContainerStyles>
