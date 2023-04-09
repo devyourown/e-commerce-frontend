@@ -15,7 +15,7 @@ export const ButtonStyles = styled.button`
   }
 `
 
-export const FindPasswordButtonsStyles = styled.button`
+export const MessageButtonStyle = styled.button`
   border: none;
   color: #717172;
   background-color: white;

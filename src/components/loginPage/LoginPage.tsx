@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Login from "./Login";
 import {useNavigate} from "react-router-dom";
 import ContainerStyles from "../styles/Container.styles";
-import {FindPasswordButtonsStyles, SingInButtonStyles} from "../styles/Button.styles";
+import {MessageButtonStyle, SingInButtonStyles} from "../styles/Button.styles";
 import useTranslate from "../../hooks/useTranslate";
 
 
@@ -23,12 +23,12 @@ function LoginPage() {
   return (
 	  <ContainerStyles>
 		<div className="login-container" >
-		  <h2>{translate("login")}</h2>
+		  <h2>{translate("sign in")}</h2>
 				<Login />
 				<div className='button-field' style={{display:"flex", justifyContent: "space-between"}}>
-					<FindPasswordButtonsStyles className="find-password" onClick={handlePasswordFind}>
+					<MessageButtonStyle className="find-password" onClick={handlePasswordFind}>
 						{translate("find password")}
-					</FindPasswordButtonsStyles>
+					</MessageButtonStyle>
 
 					<SingInButtonStyles className="sign-in-button" onClick={handleSignIn}>
 						{translate("sign up")}

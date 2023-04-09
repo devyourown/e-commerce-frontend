@@ -4,7 +4,7 @@ import useAsync from "../../hooks/useAsync";
 import {FindCode, findPasswordApi, ResponseInfo, sendCodeApi} from "../../api";
 import LabelStyles from "../styles/Label.styles";
 import InputStyles from "../styles/Input.styles";
-import {ButtonStyles} from "../styles/Button.styles";
+import {ButtonStyles, MessageButtonStyle} from "../styles/Button.styles";
 import ContainerStyles from "../styles/Container.styles";
 import useTranslate from "../../hooks/useTranslate";
 
@@ -63,6 +63,7 @@ function FindPasswordPage() {
             return;
         }
 
+        // TODO 추후 추가.
         // const result = await findPasswordAsync({email : email});
         // if (!result) return ;
 
@@ -86,7 +87,7 @@ function FindPasswordPage() {
             {isSend && <CodeValidate />}
             <ButtonStyles disabled={isLoading} onClick={handleSend}>{translate("reset code button")}</ButtonStyles>
             {loadingError?.message ? <p>loadingError.message</p> : undefined}
-            <Link to={"/login"}><div>{translate("back to sign in")}</div></Link>
+            <Link to={"/login"}><MessageButtonStyle>{translate("back to sign in")}</MessageButtonStyle></Link>
         </ContainerStyles>
     );
 }

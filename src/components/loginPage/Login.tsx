@@ -75,7 +75,7 @@ function Login() {
                 placeholder="password"
             />
             <ButtonStyles disabled={isLoading} className="login-button">
-                {translate("login")}
+                {translate("sign in")}
             </ButtonStyles>
             {loadingError?.message ? <p>loadingError.message</p> : undefined}
         </form>

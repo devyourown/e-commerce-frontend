@@ -18,7 +18,7 @@ function Header() {
                     </Col>
                     <Col className={"header-center"}><img className={"logo"} src={process.env.PUBLIC_URL + "/logo.png"} /></Col>
                     <Col className={"header-right"}>
-                        <Link to={"/login"}><div className={"header-left-item"}>{translate("login")}</div></Link>
+                        <Link to={"/login"}><div className={"header-left-item"}>{translate("sign in")}</div></Link>
                         <Link to={"/signUp"}><div className={"header-left-item"}>{translate("sign up")}</div></Link>
                     </Col>
                 </Row>
