@@ -1,15 +1,59 @@
 import React, {useState, MouseEvent} from 'react';
 import {Link} from "react-router-dom";
 import useAsync from "../../hooks/useAsync";
-import {findPasswordApi} from "../../api";
+import {FindCode, findPasswordApi, ResponseInfo, sendCodeApi} from "../../api";
+import LabelStyles from "../styles/Label.styles";
+import InputStyles from "../styles/Input.styles";
+import {ButtonStyles} from "../styles/Button.styles";
+import ContainerStyles from "../styles/Container.styles";
+import useTranslate from "../../hooks/useTranslate";
+
+function CodeValidate() {
+
+    const [code, setCode] = useState("");
+    const translate = useTranslate();
+
+    const handleCodeInput = (e : React.ChangeEvent<HTMLInputElement>) => {
+        setCode(e.target.value);
+    }
+    const handleOnClick = async () => {
+        if (!code) return;
+        const codeObj : FindCode = {
+            code : code
+        };
+        // TODO 추후 추가
+        // const response : ResponseInfo = await sendCodeApi(codeObj);
+        // if (!response.success) {
+        //     alert(translate("no match code message"));
+        //     return;
+        // }
+        alert(translate("confirm"));
+    }
+
+    return (
+        <>
+            <p>{translate("code send message")}</p>
+            <InputStyles
+                type="text"
+                name="code"
+                value={code}
+                onChange={handleCodeInput}
+                placeholder={"your code"}
+            />
+            <ButtonStyles onClick={handleOnClick}>{translate("confirm")}</ButtonStyles>
+        </>
+    )
+}
 
 function FindPasswordPage() {
     const [email, setEmail] = useState("");
+    const [isSend, setIsSend] = useState(false);
     const [isLoading, loadingError, findPasswordAsync] = useAsync(findPasswordApi);
-    const handleValueChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const translate = useTranslate();
+
+    const handleEmailInput = (e : React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
     }
-
     const handleSend = async () => {
 
         const regex = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
@@ -19,29 +63,31 @@ function FindPasswordPage() {
             return;
         }
 
-        const result = await findPasswordAsync({email : email});
-        if (!result) return ;
+        // const result = await findPasswordAsync({email : email});
+        // if (!result) return ;
 
         console.log(`Link send to ${email}`);
+        setIsSend(true);
     }
 
     return (
-        <>
-            <h2>비밀번호 재설정하기</h2>
-            <div>새로운 비밀번호를 설정할 수 있는 링크를 이메일로 전송해 드려요.</div>
-            <label>email</label>
-            <input
+        <ContainerStyles>
+            <h2>{translate("reset password")}</h2>
+            <div>{translate("reset message")}</div>
+            <LabelStyles>{translate("email")}</LabelStyles>
+            <InputStyles
                 className="input-field"
                 type="text"
                 name="email"
                 value={email}
-                onChange={handleValueChange}
+                onChange={handleEmailInput}
                 placeholder="email"
             />
-            <button disabled={isLoading} onClick={handleSend}>재설정 링크 전송하기</button>
+            {isSend && <CodeValidate />}
+            <ButtonStyles disabled={isLoading} onClick={handleSend}>{translate("reset code button")}</ButtonStyles>
             {loadingError?.message ? <p>loadingError.message</p> : undefined}
-            <Link to={"/login"}><div>로그인 페이지로 돌아가기</div></Link>
-        </>
+            <Link to={"/login"}><div>{translate("back to sign in")}</div></Link>
+        </ContainerStyles>
     );
 }
 

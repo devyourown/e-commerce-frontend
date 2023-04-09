@@ -25,6 +25,15 @@ export type singUpInfo = {
     gender : Gender,
 }
 
+export type FindCode = {
+    code : string,
+}
+
+export type ResponseInfo = {
+    success : boolean,
+    status? : number,
+}
+
 
 export async function loginApi(loginInfo : LoginInfo) : Promise<AxiosResponse>{
     try {
@@ -52,7 +61,7 @@ export type FindPasswordInfo = {
 
 export async function findPasswordApi(findPasswordInfo : FindPasswordInfo) {
     try {
-        const response: AxiosResponse = await axios.post(`${BASE_URL}/users`, findPasswordInfo); // TODO api 수정 필요
+        const response: AxiosResponse = await axios.post(`${BASE_URL}/find`, findPasswordInfo); // TODO api 수정 필요
         return response;
     } catch (error) {
         console.log(error);
@@ -60,3 +69,12 @@ export async function findPasswordApi(findPasswordInfo : FindPasswordInfo) {
     }
 }
 
+export async function sendCodeApi(code : FindCode) {
+    try {
+        const response : ResponseInfo = await axios.post(`${BASE_URL}/find/code`, code);
+        return response
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
