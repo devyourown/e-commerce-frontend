@@ -15,7 +15,7 @@ function SignUpPage() {
         username: "",
         password: "",
         confirmPassword: "",
-        birth: 0,
+        birth: "1999.09.09",
         gender: Gender.Male,
     }
     const [values, setValues] = useState(initState);

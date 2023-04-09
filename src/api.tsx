@@ -21,7 +21,7 @@ export type singUpInfo = {
     username : string,
     password : string,
     confirmPassword : string,
-    birth? : number,
+    birth : string,
     gender : Gender,
 }
 
