@@ -9,7 +9,7 @@ import LabelStyles from "../styles/Label.styles";
 import {ButtonStyles} from "../styles/Button.styles";
 import useTranslate from "../../hooks/useTranslate";
 
-function Login() {
+function SignIn() {
 
     const [values, setValues] = useState({
         email : "",
@@ -50,6 +50,10 @@ function Login() {
         // 로그인 api 요청 보내기.
         const result = await loginApiAsync(values);
         if (!result) return;
+
+        // 토근 로컬스토리지에 추가
+        const token : string = result.token;
+        localStorage.setItem("token", token);
     }
 
     const translate = useTranslate();
@@ -82,4 +86,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default SignIn;

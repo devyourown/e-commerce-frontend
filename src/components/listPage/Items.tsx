@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {RootState, ItemType} from "../../store/store";
 import "./Items.css"
@@ -7,10 +7,24 @@ type ItemProps = {
     item : ItemType
 }
 
+
+
 function Item({item} : ItemProps){
+    const [fade, setFade] = useState("");
+
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setFade("end")
+        }, 50);
+        return () => {
+            clearTimeout(timeout);
+        }
+    }, [])
+
     return (
         <>
-            <div className={"col-md-4 item"} style={{textAlign : "center"}}>
+            <div className={"col-md-4 item start " + fade} style={{textAlign : "center"}}>
                 <div>
                     <img src={process.env.PUBLIC_URL + `/product${item.id}.jpg`} width={"80%"} />
                 </div>
