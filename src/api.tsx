@@ -78,3 +78,14 @@ export async function sendCodeApi(code : FindCode) {
         throw error;
     }
 }
+
+
+export async function getItemsApi() {
+    try {
+        const response = await axios.get(`http://localhost:3000/items`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}

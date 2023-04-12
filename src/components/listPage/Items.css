@@ -1,0 +1,16 @@
+.item {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333333;
+    padding-bottom: 30px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.price {
+    margin-top: 5px;
+}

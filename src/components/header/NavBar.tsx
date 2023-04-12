@@ -1,11 +1,12 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import SelectStyles from "../styles/Select.styles";
 import LocaleSelect from "./LocaleSelect";
 import { Navbar, Container, Nav, Form, Button, NavDropdown} from 'react-bootstrap';
 
 function NavBar() {
 
+    const navigate = useNavigate();
 
     return (
         <>
@@ -13,9 +14,9 @@ function NavBar() {
                 <Container>
                     {/*<Navbar.Brand href="#home">Navbar</Navbar.Brand>*/}
                     <Nav className="me-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                        <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
+                        <Nav.Link onClick={() => navigate("/list")}>List</Nav.Link>
+                        <Nav.Link onClick={() => navigate("/")}>Pricing</Nav.Link>
                     </Nav>
                     <Form className="d-flex">
                         <Form.Control
