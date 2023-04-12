@@ -34,6 +34,9 @@ const dict: LocaleDict = {
         "reset code button" : "Send reset code",
         "back to sign in" : "Back to Sign in",
         "no match code message" : "Code is not matched",
+
+        "no matching title" : "No matching pages found",
+        "no matching content" : "Please check URL or request again.",
     },
     "ko" : {
         "sign up" : "회원가입",
@@ -61,6 +64,9 @@ const dict: LocaleDict = {
         "reset code button" : "재설정 코드 전송하기",
         "back to sign in" : "로그인 페이지로 돌아가기",
         "no match code message" : "코드가 일치하지 않습니다.",
+
+        "no matching title" : "존재하지 않는 페이지입니다.",
+        "no matching content" : "URL 을 확인하거나 다시 요청해주십시오.",
     },
 }
 

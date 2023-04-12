@@ -10,6 +10,7 @@ import {useDispatch} from "react-redux";
 import {getItemsApi} from "./api";
 import {initItems} from "./store/itemSlice";
 import useAsync from "./hooks/useAsync";
+import NoMatingPage from "./components/etcPage/NoMatingPage";
 // typescript 로 회원가입 버튼과 아이디 찾기 버튼이 있는 회원가입 페이지를 만들어줘
 
 
@@ -37,7 +38,7 @@ function App() {
                   <Route path={"/signUp"} element={<SignUpPage/>} />
                   <Route path={"/findPassword"} element={<FindPasswordPage/>} />
                   <Route path={"/list"} element={<ListPage/>} />
-
+                  <Route path={"*"} element={<NoMatingPage/>} />
               </Routes>
           </BrowserRouter>
       </>
