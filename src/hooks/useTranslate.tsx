@@ -37,6 +37,8 @@ const dict: LocaleDict = {
 
         "no matching title" : "No matching pages found",
         "no matching content" : "Please check URL or request again.",
+
+        "welcome-msg" : "! Welcome to my shop",
     },
     "ko" : {
         "sign up" : "회원가입",
@@ -67,6 +69,8 @@ const dict: LocaleDict = {
 
         "no matching title" : "존재하지 않는 페이지입니다.",
         "no matching content" : "URL 을 확인하거나 다시 요청해주십시오.",
+
+        "welcome-msg" : "님! 반갑습니다.",
     },
 }
 

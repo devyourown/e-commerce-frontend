@@ -1,13 +1,16 @@
 //React Component Function
 
 import React, {useState} from "react";
-import {loginApi} from "../../api";
+import {singInApi} from "../../api";
 import useAsync from "../../hooks/useAsync";
 import InputStyles from "../styles/Input.styles";
-import ContainerStyles from "../styles/Container.styles";
 import LabelStyles from "../styles/Label.styles";
 import {ButtonStyles} from "../styles/Button.styles";
 import useTranslate from "../../hooks/useTranslate";
+import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {setUser} from "../../store/userSlice";
+import {UserInfoType} from "../../store/store";
 
 function SignIn() {
 
@@ -15,8 +18,10 @@ function SignIn() {
         email : "",
         password : "",
     });
-
-    const [isLoading, loadingError, loginApiAsync] = useAsync(loginApi);
+    const [isLoading, loadingError, loginApiAsync] = useAsync(singInApi);
+    const navigate = useNavigate();
+    const translate = useTranslate();
+    const dispatch = useDispatch();
 
 
     const handleValuesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,9 +34,21 @@ function SignIn() {
         // 로그인 처리 로직을 작성합니다.
         event.preventDefault();
 
-        await handleLogin();
+        const result = await handleLoginRequest();
+
+        // 토근 로컬스토리지에 추가.
+        const token : string = result.token;
+        localStorage.setItem("token", token);
+
+        // 유저 정보 리덕스에 추가.
+        const userInfo : UserInfoType = result;
+        dispatch(setUser(userInfo));
+
+
+        // 이전 화면으로 이동.
+        navigate(-1);
     }
-    async function handleLogin () {
+    async function handleLoginRequest () {
         // email 값 확인하기
         const {email, password} = values;
 
@@ -50,13 +67,9 @@ function SignIn() {
         // 로그인 api 요청 보내기.
         const result = await loginApiAsync(values);
         if (!result) return;
-
-        // 토근 로컬스토리지에 추가현
-        const token : string = result.token;
-        localStorage.setItem("token", token);
+        return result;
     }
 
-    const translate = useTranslate();
 
     return (
         <form className="login-form" onSubmit={handleOnSubmit}>

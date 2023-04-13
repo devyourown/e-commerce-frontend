@@ -4,7 +4,7 @@ import {Simulate} from "react-dom/test-utils";
 
 const BASE_URL = 'http://localhost:3000';
 
-export type LoginInfo = {
+export type SingInInfo = {
     email: string;
     password: string;
 }
@@ -34,9 +34,10 @@ export type ResponseInfo = {
 }
 
 
-export async function loginApi(loginInfo : LoginInfo) : Promise<AxiosResponse>{
+export async function singInApi(signInInfo : SingInInfo) : Promise<AxiosResponse>{
     try {
-        const response: AxiosResponse = await axios.post(`${BASE_URL}/users`, loginInfo);
+        // const response: AxiosResponse = await axios.post(`${BASE_URL}/users`, signInInfo);
+        const response: AxiosResponse = await axios.get(`${BASE_URL}/users`); // 테스트용
         return response.data;
     } catch (error) {
         console.log(error);
