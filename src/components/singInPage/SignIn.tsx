@@ -51,7 +51,7 @@ function SignIn() {
         const result = await loginApiAsync(values);
         if (!result) return;
 
-        // 토근 로컬스토리지에 추가
+        // 토근 로컬스토리지에 추가현
         const token : string = result.token;
         localStorage.setItem("token", token);
     }

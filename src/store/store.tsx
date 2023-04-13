@@ -2,17 +2,20 @@ import {configureStore, createSlice} from '@reduxjs/toolkit'
 
 import items from "./itemSlice";
 
+
+
 export type ItemType = {
-    id : number,
-    title : string,
-    price : number,
-    content : string,
-    category : string,
+    id  : number,
+    title  : string,
+    price  : number,
+    content  : string,
+    category  : string,
+    recommend  : number,
 }
 
 export type CartType = {
-    id: number;
-    quantity: number;
+    id : number;
+    quantity : number;
 }
 
 export type RootState = {

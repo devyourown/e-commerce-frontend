@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
 
 
 const BASE_URL = 'http://localhost:3000';
@@ -37,8 +36,8 @@ export type ResponseInfo = {
 
 export async function loginApi(loginInfo : LoginInfo) : Promise<AxiosResponse>{
     try {
-        const response: AxiosResponse = await axios.post(`${BASE_URL}/login`, loginInfo);
-        return response;
+        const response: AxiosResponse = await axios.post(`${BASE_URL}/users`, loginInfo);
+        return response.data;
     } catch (error) {
         console.log(error);
         throw error;
@@ -47,8 +46,8 @@ export async function loginApi(loginInfo : LoginInfo) : Promise<AxiosResponse>{
 
 export async function signUpApi(singUpInfo : singUpInfo) {
 	try {
-        const response: AxiosResponse = await axios.post(`${BASE_URL}/users`, singUpInfo);
-        return response;
+        const response: AxiosResponse = await axios.post(`${BASE_URL}/users/new`, singUpInfo);
+        return response.data;
     } catch (error) {
         console.log(error);
         throw error;
@@ -62,7 +61,7 @@ export type FindPasswordInfo = {
 export async function findPasswordApi(findPasswordInfo : FindPasswordInfo) {
     try {
         const response: AxiosResponse = await axios.post(`${BASE_URL}/find`, findPasswordInfo); // TODO api 수정 필요
-        return response;
+        return response.data;
     } catch (error) {
         console.log(error);
         throw error;
@@ -71,8 +70,8 @@ export async function findPasswordApi(findPasswordInfo : FindPasswordInfo) {
 
 export async function sendCodeApi(code : FindCode) {
     try {
-        const response : ResponseInfo = await axios.post(`${BASE_URL}/find/code`, code);
-        return response
+        const response : AxiosResponse = await axios.post(`${BASE_URL}/find/code`, code);
+        return response.data
     } catch (error) {
         console.log(error);
         throw error;
