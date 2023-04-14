@@ -39,7 +39,7 @@ function TabComponent({option} : {option : number}) {
     ]
 
     return (
-        <div className={"content start " + fade}>
+        <div className={"tab-content start " + fade}>
             {contents[option]}
         </div>
     )

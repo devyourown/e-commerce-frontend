@@ -1,4 +1,9 @@
 .content {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.tab-content {
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
     margin-top: 10px;
 }

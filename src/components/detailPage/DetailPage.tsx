@@ -16,7 +16,7 @@ function DetailPage() {
     const url = `/product.jpg`;
 
     return (
-        <Container className={"start " + fade}>
+        <Container className={"content start " + fade}>
             <Row style={{paddingTop : "10px"}}>
                 <Col className="col-md-6">
                     <img src={url} width="100%"/>
