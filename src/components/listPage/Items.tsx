@@ -2,9 +2,17 @@ import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {RootState, ItemType} from "../../store/store";
 import "./Items.css"
+import {NavLink} from "react-router-dom";
 
 type ItemProps = {
     item : ItemType
+}
+
+function getLinkStyle() {
+    return {
+        color : "black",
+        textDecoration: "none",
+    }
 }
 
 
@@ -25,6 +33,7 @@ function Item({item} : ItemProps){
     return (
         <>
             <div className={"col-md-4 item start " + fade} style={{textAlign : "center"}}>
+                <NavLink to={`/item/${item.id}`} style={getLinkStyle()}>
                 <div>
                     <img src={process.env.PUBLIC_URL + `/product${item.id}.jpg`} width={"80%"} />
                 </div>
@@ -33,8 +42,8 @@ function Item({item} : ItemProps){
                     <div><span>{item.content}</span></div>
                     <div className={"price"}><span>{item.price}</span></div>
                 </div>
+                </NavLink>
             </div>
-
         </>
     )
 }
