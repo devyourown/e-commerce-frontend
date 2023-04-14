@@ -7,7 +7,6 @@ import {getItemsApi} from "../../api";
 import {useDispatch, useSelector} from "react-redux";
 import SelectStyles from "../styles/Select.styles";
 import Loading from "../etcPage/Loading";
-import useFade from "../../hooks/useFade";
 
 function ListPage() {
     const [isPending, error, getItemApiAsync] = useAsync(getItemsApi);

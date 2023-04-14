@@ -2,6 +2,10 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.content-info {
+    padding-left: 30px;
+}
+
 .tab-content {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
