@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-// import './LoginPage.css';
-import Login from "./Login";
+// import './SignInPage.css';
+import SignIn from "./SignIn";
 import {useNavigate} from "react-router-dom";
 import ContainerStyles from "../styles/Container.styles";
-import {FindPasswordButtonsStyles, SingInButtonStyles} from "../styles/Button.styles";
+import {MessageButtonStyle, SingInButtonStyles} from "../styles/Button.styles";
 import useTranslate from "../../hooks/useTranslate";
+import useFade from "../../hooks/useFade";
 
 
-function LoginPage() {
+function SignInPage() {
+	const {fade} = useFade("");
 	const navigate = useNavigate();
   const handlePasswordFind = () => {
 	navigate("/findPassword")
@@ -21,14 +23,14 @@ function LoginPage() {
   const translate = useTranslate();
 
   return (
-	  <ContainerStyles>
+	  <ContainerStyles className={"start " + fade}>
 		<div className="login-container" >
-		  <h2>{translate("login")}</h2>
-				<Login />
+		  <h2>{translate("sign in")}</h2>
+				<SignIn />
 				<div className='button-field' style={{display:"flex", justifyContent: "space-between"}}>
-					<FindPasswordButtonsStyles className="find-password" onClick={handlePasswordFind}>
+					<MessageButtonStyle className="find-password" onClick={handlePasswordFind}>
 						{translate("find password")}
-					</FindPasswordButtonsStyles>
+					</MessageButtonStyle>
 
 					<SingInButtonStyles className="sign-in-button" onClick={handleSignIn}>
 						{translate("sign up")}
@@ -39,4 +41,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default SignInPage;

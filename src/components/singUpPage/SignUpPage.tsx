@@ -7,6 +7,7 @@ import {ButtonStyles} from "../styles/Button.styles";
 import SelectStyles from "../styles/Select.styles";
 import ContainerStyles from "../styles/Container.styles";
 import useTranslate from "../../hooks/useTranslate";
+import useFade from "../../hooks/useFade";
 
 
 function SignUpPage() {
@@ -15,10 +16,11 @@ function SignUpPage() {
         username: "",
         password: "",
         confirmPassword: "",
-        birth: 0,
+        birth: "1999.09.09",
         gender: Gender.Male,
     }
     const [values, setValues] = useState(initState);
+    const {fade} = useFade("");
 
     const [isLoading, loadingError, signUpApiAsync] = useAsync(signUpApi);
 
@@ -66,7 +68,7 @@ function SignUpPage() {
 
 
     return (
-        <ContainerStyles>
+        <ContainerStyles className={"start " + fade}>
             <h2>{translate("sign up")}</h2>
             <form className="signup-form" onSubmit={handleSignUp}>
                 <LabelStyles>{translate("email")}</LabelStyles>

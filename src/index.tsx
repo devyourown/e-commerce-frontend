@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import {LocalProvider} from "./contexts/LocaleContext";
-
+import store from "./store/store"
 
 
 
@@ -14,9 +14,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-      <LocalProvider>
-        <App />
-      </LocalProvider>
+      <Provider store={store}>
+          <LocalProvider>
+            <App />
+          </LocalProvider>
+      </Provider>
   </React.StrictMode>
 );
 

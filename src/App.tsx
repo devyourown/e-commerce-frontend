@@ -1,25 +1,34 @@
-import React from 'react';
-import LoginPage from './components/loginPage/LoginPage';
+import React, {Suspense, useEffect} from 'react';
+import SignInPage from './components/singInPage/SignInPage';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Header from "./components/nav/Header";
-import SignUpPage from "./components/singIpPage/SignUpPage";
-import FindPasswordPage from "./components/loginPage/FindPasswordPage";
-// typescript 로 회원가입 버튼과 아이디 찾기 버튼이 있는 회원가입 페이지를 만들어줘
+import Header from "./components/header/Header";
+import SignUpPage from "./components/singUpPage/SignUpPage";
+import FindPasswordPage from "./components/singInPage/FindPasswordPage";
+import MainPage from "./components/MainPage";
+import ListPage from "./components/listPage/ListPage";
+import NoMatingPage from "./components/etcPage/NoMatingPage";
+import "./App.css"
+import DetailPage from "./components/detailPage/DetailPage";
+
 
 function App() {
 
 
-
   return (
-      <BrowserRouter>
-          <Routes>
-              <Route path={"/"} element={<Header />}>
-                  <Route path={"login"} element={<LoginPage />} />
-                  <Route path={"signUp"} element={<SignUpPage/>} />
-                  <Route path={"findPassword"} element={<FindPasswordPage/>} />
-              </Route>
-          </Routes>
-      </BrowserRouter>
+      <>
+          <BrowserRouter>
+              <Header />
+              <Routes>
+                  <Route path={"/"} element={<MainPage />} />
+                  <Route path={"/signIn"} element={<SignInPage />} />
+                  <Route path={"/signUp"} element={<SignUpPage/>} />
+                  <Route path={"/findPassword"} element={<FindPasswordPage/>} />
+                  <Route path={"/list"} element={<ListPage/>} />
+                  <Route path={"/item/:id"} element={<DetailPage/>}/>
+                  <Route path={"*"} element={<NoMatingPage/>} />
+              </Routes>
+          </BrowserRouter>
+      </>
   );
 }
 

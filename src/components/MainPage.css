@@ -1,0 +1,10 @@
+.main-bg {
+    height: 500px;
+    background-image: url("../main-bg.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.main-content {
+    padding-left: 100px;
+    padding-right: 100px;
+}

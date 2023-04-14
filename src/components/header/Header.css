@@ -1,0 +1,51 @@
+.logo {
+    height: 100px;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 20px;
+    background-color: #f0f0f0;
+    flex-direction: column;
+}
+
+.header-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+    float: left;
+    width: 33%;
+}
+
+.header-right div {
+    margin-right: 10px;
+}
+
+.header-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 33%;
+}
+
+.header-center img {
+    max-height: 100%;
+    max-width: 100%;
+    float: left;
+}
+
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    float: left;
+    width: 33%;
+}
+
+.header-right select {
+    margin-left: 10px;
+}

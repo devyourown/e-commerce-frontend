@@ -10,7 +10,7 @@ type LocaleDict = {
 const dict: LocaleDict = {
     "en" : {
         "sign up" : "Sign Up",
-        "login" : "Login",
+        "sign in" : "Sign in",
 
         "user name" : "User Name",
         "confirm" : "OK",
@@ -27,10 +27,22 @@ const dict: LocaleDict = {
         "gender" : "Gender",
 
         "find password" : "Forgot your password?",
+
+        "reset password" : "Reset password",
+        "reset message" : "Wㄷ will send you an email with a code to set up a new password",
+        "code send message" : "Place input your code",
+        "reset code button" : "Send reset code",
+        "back to sign in" : "Back to Sign in",
+        "no match code message" : "Code is not matched",
+
+        "no matching title" : "No matching pages found",
+        "no matching content" : "Please check URL or request again.",
+
+        "welcome-msg" : "! Welcome to my shop",
     },
     "ko" : {
         "sign up" : "회원가입",
-        "login" : "로그인",
+        "sign in" : "로그인",
 
         "user name" : "사용자 이름",
         "confirm" : "확인",
@@ -47,6 +59,18 @@ const dict: LocaleDict = {
         "gender" : "성별",
 
         "find password" : "비밀번호를 잊어버리셨나요?",
+
+        "reset password" : "비밀번호 재설정하기",
+        "reset message" : "새로운 비밀번호를 설정할 수 있는 코드를 이메일로 전송해 드려요.",
+        "code send message" : "이메일로 전송된 코드를 입력해주세요.",
+        "reset code button" : "재설정 코드 전송하기",
+        "back to sign in" : "로그인 페이지로 돌아가기",
+        "no match code message" : "코드가 일치하지 않습니다.",
+
+        "no matching title" : "존재하지 않는 페이지입니다.",
+        "no matching content" : "URL 을 확인하거나 다시 요청해주십시오.",
+
+        "welcome-msg" : "님! 반갑습니다.",
     },
 }
 
