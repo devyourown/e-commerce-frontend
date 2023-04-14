@@ -6,9 +6,11 @@ import {useNavigate} from "react-router-dom";
 import ContainerStyles from "../styles/Container.styles";
 import {MessageButtonStyle, SingInButtonStyles} from "../styles/Button.styles";
 import useTranslate from "../../hooks/useTranslate";
+import useFade from "../../hooks/useFade";
 
 
 function SignInPage() {
+	const {fade} = useFade("");
 	const navigate = useNavigate();
   const handlePasswordFind = () => {
 	navigate("/findPassword")
@@ -21,7 +23,7 @@ function SignInPage() {
   const translate = useTranslate();
 
   return (
-	  <ContainerStyles>
+	  <ContainerStyles className={"start " + fade}>
 		<div className="login-container" >
 		  <h2>{translate("sign in")}</h2>
 				<SignIn />

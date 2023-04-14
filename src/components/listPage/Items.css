@@ -1,6 +1,6 @@
 .item {
-    font-family: "Helvetica Neue", sans-serif;
-    font-size: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
     line-height: 1.5;
     color: #333333;
     padding-bottom: 30px;
@@ -8,9 +8,16 @@
 
 .title {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
+    text-align: left;
 }
 
 .price {
-    margin-top: 5px;
+    margin-top: 2px;
+    text-align: left;
+}
+
+.content > span  {
+    text-align: left;
+    display: block;
 }

@@ -1,6 +1,7 @@
 import React, {MouseEventHandler, useEffect, useState} from 'react';
 import {Nav} from "react-bootstrap";
 import "./DetailPage.css"
+import useFade from "../../hooks/useFade";
 
 
 function TabNav({setOption} : {setOption : React.Dispatch<React.SetStateAction<number>>}) {
@@ -29,18 +30,7 @@ function TabNav({setOption} : {setOption : React.Dispatch<React.SetStateAction<n
 }
 
 function TabComponent({option} : {option : number}) {
-
-    const [fade, setFade] = useState("");
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setFade("end");
-        }, 500);
-        return () => {
-            clearTimeout(timer);
-            setFade("");
-        }
-    }, [option])
+    const {fade} = useFade(option);
 
     let contents = [
         <div>옵션 0 내용</div>,
@@ -60,10 +50,10 @@ function Tab() {
 
 
     return (
-        <>
+        <div className={"tab"}>
             <TabNav setOption={setOption}/>
             <TabComponent option={option}/>
-        </>
+        </div>
     );
 }
 

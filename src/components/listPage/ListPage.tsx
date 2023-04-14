@@ -7,6 +7,7 @@ import {getItemsApi} from "../../api";
 import {useDispatch, useSelector} from "react-redux";
 import SelectStyles from "../styles/Select.styles";
 import Loading from "../etcPage/Loading";
+import useFade from "../../hooks/useFade";
 
 function ListPage() {
     const [isPending, error, getItemApiAsync] = useAsync(getItemsApi);
@@ -27,7 +28,7 @@ function ListPage() {
 
     return (
         <>
-            <Container>
+            <Container >
                 <Row className="justify-content-md-center" style={{marginBottom : "30px", padding : "10px"}}>
                     <Col xs={20} md={9}></Col>
                     <Col xs={1} md={1}>
@@ -40,7 +41,7 @@ function ListPage() {
                     </Col>
                 </Row>
                 {isPending && <Loading/>}
-                <Items/>
+                <Items />
             </Container>
         </>
     );

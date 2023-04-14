@@ -4,17 +4,19 @@ import {useSelector} from "react-redux";
 import {ItemType, RootState} from "../../store/store";
 import {Col, Container, Nav, Row} from "react-bootstrap";
 import Tab from "./Tab"
+import useFade from "../../hooks/useFade";
 
 
 
 function DetailPage() {
+    const {fade} = useFade("");
     const items = useSelector((state : RootState) => state.items);
     let {id} = useParams() as {id : string};
     const item = items.find(i => i.id === +id) as ItemType;
-    const url = `/product${id}.jpg`;
+    const url = `/product.jpg`;
 
     return (
-        <Container>
+        <Container className={"start " + fade}>
             <Row style={{paddingTop : "10px"}}>
                 <Col className="col-md-6">
                     <img src={url} width="100%"/>

@@ -3,6 +3,7 @@ import {useSelector} from "react-redux";
 import {RootState, ItemType} from "../../store/store";
 import "./Items.css"
 import {NavLink} from "react-router-dom";
+import useFade from "../../hooks/useFade";
 
 type ItemProps = {
     item : ItemType
@@ -18,28 +19,17 @@ function getLinkStyle() {
 
 
 function Item({item} : ItemProps){
-    const [fade, setFade] = useState("");
-
-
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setFade("end")
-        }, 50);
-        return () => {
-            clearTimeout(timeout);
-        }
-    }, [])
 
     return (
         <>
-            <div className={"col-md-4 item start " + fade} style={{textAlign : "center"}}>
+            <div className={"col-md-4 item"} style={{textAlign : "center"}}>
                 <NavLink to={`/item/${item.id}`} style={getLinkStyle()}>
                 <div>
-                    <img src={process.env.PUBLIC_URL + `/product${item.id}.jpg`} width={"80%"} />
+                    <img src={process.env.PUBLIC_URL + `/product.jpg`} width={"100%"} />
                 </div>
                 <div >
                     <div className={"title"}><span>{item.title}</span></div>
-                    <div><span>{item.content}</span></div>
+                    <div className={"content"}><span>{item.content}</span></div>
                     <div className={"price"}><span>{item.price}</span></div>
                 </div>
                 </NavLink>
@@ -48,10 +38,12 @@ function Item({item} : ItemProps){
     )
 }
 
-function Items() {
+function Items(props : any) {
     const items: ItemType[] = useSelector((state: RootState) => state.items);
+    const {fade} = useFade(items);
+
     return (
-        <div className={"row"} >
+        <div className={"row start "+fade} >
             {items.map(item => <Item key={item.id} item={item}/>)}
         </div>
     );
