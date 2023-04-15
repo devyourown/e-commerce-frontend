@@ -26,6 +26,7 @@ export type singUpInfo = {
 
 export type FindCode = {
     code : string,
+    email : string,
 }
 
 export type ResponseInfo = {
@@ -61,7 +62,7 @@ export type FindPasswordInfo = {
 
 export async function findPasswordApi(findPasswordInfo : FindPasswordInfo) {
     try {
-        const response: AxiosResponse = await axios.post(`${BASE_URL}/find`, findPasswordInfo); // TODO api 수정 필요
+        const response: AxiosResponse = await axios.post(`${BASE_URL}/users/find/password`, findPasswordInfo); // TODO api 수정 필요
         return response.data;
     } catch (error) {
         console.log(error);
@@ -69,23 +70,36 @@ export async function findPasswordApi(findPasswordInfo : FindPasswordInfo) {
     }
 }
 
-export async function sendCodeApi(code : FindCode) {
+export async function sendCodeApi(info : FindCode) {
     try {
-        const response : AxiosResponse = await axios.post(`${BASE_URL}/find/code`, code);
-        return response.data
+        const response : AxiosResponse = await axios.post(`${BASE_URL}/users/find/password/code`, info);
+        return response.data;
     } catch (error) {
         console.log(error);
         throw error;
     }
 }
-
 
 export async function getItemsApi() {
     try {
-        const response = await axios.get(`http://localhost:3000/items`);
+        const response = await axios.get(`${BASE_URL}/items`);
         return response.data;
     } catch (error) {
         console.log(error);
         throw error;
     }
+}
+
+export async function verifyTokenApi(token : string, url : string) {
+    try {
+        const response = await axios.post(`${BASE_URL}/auth/${url}`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function resetPasswordApi() {
+
 }

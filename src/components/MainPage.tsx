@@ -7,6 +7,8 @@ import DivStyles from "./styles/Div.styles";
 function MainPage() {
     const {fade} = useFade("");
 
+
+
     return (
         <div className={"main-content"}>
             <DivStyles/>

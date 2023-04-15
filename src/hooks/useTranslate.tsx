@@ -29,7 +29,7 @@ const dict: LocaleDict = {
         "find password" : "Forgot your password?",
 
         "reset password" : "Reset password",
-        "reset message" : "Wㄷ will send you an email with a code to set up a new password",
+        "reset message" : "We will send you an email with a code to set up a new password",
         "code send message" : "Place input your code",
         "reset code button" : "Send reset code",
         "back to sign in" : "Back to Sign in",
@@ -73,6 +73,13 @@ const dict: LocaleDict = {
         "welcome-msg" : "님! 반갑습니다.",
     },
 }
+
+// let words = [["sign in", "Sing in", "로그인"]]
+
+// function addMeg(key : string, en : string, ko : string){
+//     dict[en][key] = en;
+//     dict[ko][key] = en;
+// }
 
 function useTranslate() {
     const locale : string = useLocale();

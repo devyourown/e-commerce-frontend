@@ -7,17 +7,33 @@ import ContainerStyles from "../styles/Container.styles";
 import {MessageButtonStyle, SingInButtonStyles} from "../styles/Button.styles";
 import useTranslate from "../../hooks/useTranslate";
 import useFade from "../../hooks/useFade";
+import {verifyTokenApi} from "../../api";
 
 
 function SignInPage() {
 	const {fade} = useFade("");
 	const navigate = useNavigate();
+
+	// useEffect(() => {
+	// 	const token = localStorage.getItem("token");
+	// 	if (token) {
+	// 		verifyTokenApi(token, "signIn")
+	// 			.then(response => {
+	// 				if (!response.data.success) {
+	// 					alert("페이지 접근 권한이 없습니다.");
+	// 					navigate("/");
+	// 				};
+	// 			})
+	// 	}
+	// }, []);
+
+
   const handlePasswordFind = () => {
 	navigate("/findPassword")
   }
 
   const handleSignIn = () => {
-	  navigate("/signUp"); //
+	  navigate("/signUp");
   }
 
   const translate = useTranslate();

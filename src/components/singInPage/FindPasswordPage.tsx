@@ -1,5 +1,5 @@
 import React, {useState, MouseEvent} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import useAsync from "../../hooks/useAsync";
 import {FindCode, findPasswordApi, ResponseInfo, sendCodeApi} from "../../api";
 import LabelStyles from "../styles/Label.styles";
@@ -8,10 +8,11 @@ import {ButtonStyles, MessageButtonStyle} from "../styles/Button.styles";
 import ContainerStyles from "../styles/Container.styles";
 import useTranslate from "../../hooks/useTranslate";
 
-function CodeValidate() {
+function CodeValidate({email} : {email : string}) {
 
     const [code, setCode] = useState("");
     const translate = useTranslate();
+    const navigate = useNavigate();
 
     const handleCodeInput = (e : React.ChangeEvent<HTMLInputElement>) => {
         setCode(e.target.value);
@@ -19,7 +20,8 @@ function CodeValidate() {
     const handleOnClick = async () => {
         if (!code) return;
         const codeObj : FindCode = {
-            code : code
+            code : code,
+            email : email
         };
         // TODO 추후 추가
         // const response : ResponseInfo = await sendCodeApi(codeObj);
@@ -28,6 +30,7 @@ function CodeValidate() {
         //     return;
         // }
         alert(translate("confirm"));
+        navigate("reset");
     }
 
     return (
@@ -84,7 +87,7 @@ function FindPasswordPage() {
                 onChange={handleEmailInput}
                 placeholder="email"
             />
-            {isSend && <CodeValidate />}
+            {isSend && <CodeValidate email={email} />}
             <ButtonStyles disabled={isLoading} onClick={handleSend}>{translate("reset code button")}</ButtonStyles>
             {loadingError?.message ? <p>loadingError.message</p> : undefined}
             <Link to={"/login"}><MessageButtonStyle>{translate("back to sign in")}</MessageButtonStyle></Link>
