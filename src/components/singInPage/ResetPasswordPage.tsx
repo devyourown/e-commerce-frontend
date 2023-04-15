@@ -38,8 +38,8 @@ function ResetPasswordPage() {
     return (
         <ContainerStyles>
             <form onSubmit={handleSubmit}>
-                <h2>Reset your new password</h2>
-                <div>please enter new password.</div>
+                <h2>{translate("reset password")}</h2>
+                <div>{translate("enter new password")}</div>
                 <LabelStyles>{translate("password")}</LabelStyles>
                 <InputStyles
                     className="input-field"
