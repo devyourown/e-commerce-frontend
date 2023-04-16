@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import Items from "./Items";
 import {Container, Row, Col} from "react-bootstrap";
-import {initItems, orderItem} from "../../store/itemSlice";
+import {initItems, sortItem} from "../../store/itemSlice";
 import useAsync from "../../hooks/useAsync";
 import {getItemsApi} from "../../api";
 import {useDispatch, useSelector} from "react-redux";
 import SelectStyles from "../styles/Select.styles";
 import Loading from "../etcPage/Loading";
 import useTranslate from "../../hooks/useTranslate";
+import {ItemType} from "../../types/stateTypes";
 
 function ListPage() {
     const [isPending, error, getItemApiAsync] = useAsync(getItemsApi);
@@ -16,15 +17,17 @@ function ListPage() {
 
     useEffect(() => {
         async function fetchData() {
-            const items = await getItemApiAsync();
-            dispatch(initItems(items));
-            dispatch(orderItem("recommend"));
+            const items = sessionStorage.getItem("items");
+            const newItems = !items ? await getItemApiAsync() : JSON.parse(items);
+            sessionStorage.setItem("items", JSON.stringify(newItems));
+            dispatch(initItems(newItems));
+            dispatch(sortItem("recommend"));
         }
         fetchData();
     }, []);
 
     const handleSelect = async (e : React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(orderItem(e.target.value));
+        dispatch(sortItem(e.target.value));
     }
 
     return (

@@ -34,5 +34,5 @@ const items = createSlice({
         }
     }
 })
-export let {addItem, initItems, orderItem} = items.actions;
+export let {addItem, initItems, orderItem: sortItem} = items.actions;
 export default items
