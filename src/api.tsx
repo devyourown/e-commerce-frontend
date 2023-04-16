@@ -3,6 +3,8 @@ import { SingInInfo, singUpInfo, FindPasswordInfo, FindCode } from "./types/type
 
 const BASE_URL = 'http://localhost:3000';
 
+axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 export async function singInApi(signInInfo : SingInInfo) : Promise<AxiosResponse>{
     try {
         // const response: AxiosResponse = await axios.post(`${BASE_URL}/users`, signInInfo);
@@ -64,9 +66,9 @@ export async function getItemApi(id : string) {
     }
 }
 
-export async function verifyTokenApi(token : string, url : string) {
+export async function authenticateApi(url : string) {
     try {
-        const response = await axios.post(`${BASE_URL}/auth/${url}`);
+        const response = await axios.get(`${BASE_URL}/auth/${url}`);
         return response.data;
     } catch (error) {
         console.log(error);

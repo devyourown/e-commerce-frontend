@@ -7,7 +7,7 @@ import ContainerStyles from "../styles/Container.styles";
 import {MessageButtonStyle, SingInButtonStyles} from "../styles/Button.styles";
 import useTranslate from "../../hooks/useTranslate";
 import useFade from "../../hooks/useFade";
-import {verifyTokenApi} from "../../api";
+import {authenticateApi} from "../../api";
 
 
 function SignInPage() {
