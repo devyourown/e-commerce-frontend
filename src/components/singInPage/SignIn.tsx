@@ -10,7 +10,7 @@ import useTranslate from "../../hooks/useTranslate";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {setUser} from "../../store/userSlice";
-import {UserInfoType} from "../../store/store";
+import { UserInfoType } from "../../types/types";
 
 function SignIn() {
 

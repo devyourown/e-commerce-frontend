@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {UserInfoType} from "./store";
+import { UserInfoType } from "../types/types";
 
 const initialState : UserInfoType = {isSignIn : false} ;
 

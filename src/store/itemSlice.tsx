@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import {ItemType} from "./store";
+import { ItemType } from "../types/types";
 
 
 const initialState : ItemType[] = [];

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
-import {ItemType, RootState} from "../../store/store";
 import {Col, Container, Nav, Row} from "react-bootstrap";
 import Tab from "./Tab"
 import useFade from "../../hooks/useFade";
@@ -9,6 +8,7 @@ import {ButtonStyles} from "../styles/Button.styles";
 import LabelStyles from "../styles/Label.styles";
 import useAsync from "../../hooks/useAsync";
 import {getItemApi} from "../../api";
+import {ItemType, RootState } from '../../types/types';
 
 function DetailPage() {
     const {fade} = useFade("");

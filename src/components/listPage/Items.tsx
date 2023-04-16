@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
-import {RootState, ItemType} from "../../store/store";
 import "./Items.css"
 import {NavLink} from "react-router-dom";
 import useFade from "../../hooks/useFade";
+import { ItemProps, ItemType, RootState } from '../../types/types';
 
-type ItemProps = {
-    item : ItemType
-}
+
 
 function getLinkStyle() {
     return {

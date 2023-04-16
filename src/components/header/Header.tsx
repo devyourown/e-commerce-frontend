@@ -6,7 +6,7 @@ import {Container, Row, Col} from "react-bootstrap";
 import useTranslate from "../../hooks/useTranslate";
 import LocaleSelect from "./LocaleSelect";
 import {useSelector} from "react-redux";
-import {RootState, UserInfoType} from "../../store/store";
+import {RootState, UserInfoType } from '../../types/types';
 
 function Header() {
     const translate = useTranslate();

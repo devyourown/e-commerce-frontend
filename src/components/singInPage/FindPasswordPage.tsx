@@ -1,12 +1,13 @@
 import React, {useState, MouseEvent} from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import useAsync from "../../hooks/useAsync";
-import {FindCode, findPasswordApi, ResponseInfo, sendCodeApi} from "../../api";
+import {findPasswordApi, sendCodeApi} from "../../api";
 import LabelStyles from "../styles/Label.styles";
 import InputStyles from "../styles/Input.styles";
 import {ButtonStyles, MessageButtonStyle} from "../styles/Button.styles";
 import ContainerStyles from "../styles/Container.styles";
 import useTranslate from "../../hooks/useTranslate";
+import { FindCode } from '../../types/types';
 
 function CodeValidate({email} : {email : string}) {
 

@@ -1,39 +1,7 @@
 import axios, { AxiosResponse } from "axios";
-import {Simulate} from "react-dom/test-utils";
-
+import { SingInInfo, singUpInfo, FindPasswordInfo, FindCode } from "./types/types";
 
 const BASE_URL = 'http://localhost:3000';
-
-export type SingInInfo = {
-    email: string;
-    password: string;
-}
-
-export enum Gender {
-    Male,
-    Female,
-    Other,
-}
-
-export type singUpInfo = {
-    email : string,
-    username : string,
-    password : string,
-    confirmPassword : string,
-    birth : string,
-    gender : Gender,
-}
-
-export type FindCode = {
-    code : string,
-    email : string,
-}
-
-export type ResponseInfo = {
-    success : boolean,
-    status? : number,
-}
-
 
 export async function singInApi(signInInfo : SingInInfo) : Promise<AxiosResponse>{
     try {
@@ -54,10 +22,6 @@ export async function signUpApi(singUpInfo : singUpInfo) {
         console.log(error);
         throw error;
     }
-}
-
-export type FindPasswordInfo = {
-    email : string,
 }
 
 export async function findPasswordApi(findPasswordInfo : FindPasswordInfo) {

@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import {Gender, signUpApi, singUpInfo} from "../../api";
 import useAsync from "../../hooks/useAsync";
 import InputStyles from "../styles/Input.styles";
 import LabelStyles from "../styles/Label.styles";
@@ -8,6 +7,8 @@ import SelectStyles from "../styles/Select.styles";
 import ContainerStyles from "../styles/Container.styles";
 import useTranslate from "../../hooks/useTranslate";
 import useFade from "../../hooks/useFade";
+import {Gender, singUpInfo } from "../../types/types";
+import { signUpApi } from "../../api";
 
 
 function SignUpPage() {
