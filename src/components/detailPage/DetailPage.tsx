@@ -1,22 +1,42 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {ItemType, RootState} from "../../store/store";
 import {Col, Container, Nav, Row} from "react-bootstrap";
 import Tab from "./Tab"
 import useFade from "../../hooks/useFade";
-import DivStyles from "../styles/Div.styles";
 import {ButtonStyles} from "../styles/Button.styles";
 import LabelStyles from "../styles/Label.styles";
-
-
+import useAsync from "../../hooks/useAsync";
+import {getItemApi} from "../../api";
 
 function DetailPage() {
     const {fade} = useFade("");
     const items = useSelector((state : RootState) => state.items);
     let {id} = useParams() as {id : string};
-    const item = items.find(i => i.id === +id) as ItemType;
+    const [isPending, error, getItemApiAsync] = useAsync(getItemApi);
+    const [item, setItem] = useState<ItemType>({
+        id: 0,
+        title: "string",
+        price: 0,
+        content: "string",
+        sizes: [],
+        colors: [],
+        category: "string",
+        recommend: 0,
+    });
     const url = `/product.jpg`;
+
+    useEffect(() => {
+        let result = items.find(i => i.id === +id);
+        if (!result) {
+            getItemApiAsync(id)
+                .then((res : ItemType) => setItem(res))
+                .catch((err : Error) => console.log(err));
+        } else {
+            setItem(result);
+        }
+    }, [])
 
     return (
         <Container className={"content start " + fade}>

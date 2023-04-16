@@ -90,6 +90,16 @@ export async function getItemsApi() {
     }
 }
 
+export async function getItemApi(id : string) {
+    try {
+        const response = await axios.get(`${BASE_URL}/items/${id}`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 export async function verifyTokenApi(token : string, url : string) {
     try {
         const response = await axios.post(`${BASE_URL}/auth/${url}`);

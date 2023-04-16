@@ -26,7 +26,7 @@ function App() {
                   <Route path={"/findPassword"} element={<FindPasswordPage/>} />
                   <Route path={"/findPassword/reset"} element={<ResetPasswordPage/>}/>
                   <Route path={"/list"} element={<ListPage/>} />
-                  <Route path={"/item/:id"} element={<DetailPage/>}/>
+                  <Route path={"/items/:id"} element={<DetailPage/>}/>
                   <Route path={"*"} element={<NoMatingPage/>} />
               </Routes>
           </BrowserRouter>

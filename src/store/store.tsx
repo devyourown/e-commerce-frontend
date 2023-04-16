@@ -19,7 +19,7 @@ export type ItemType = {
     title  : string,
     price  : number,
     content  : string,
-    sizes : number[],
+    sizes : string[],
     colors : string[],
     category  : string,
     recommend  : number,

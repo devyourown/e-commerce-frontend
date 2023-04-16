@@ -23,7 +23,7 @@ function Item({item} : ItemProps){
     return (
         <>
             <div className={"col-md-4 item"} style={{textAlign : "center"}}>
-                <NavLink to={`/item/${item.id}`} style={getLinkStyle()}>
+                <NavLink to={`/items/${item.id}`} style={getLinkStyle()}>
                 <div>
                     <img src={process.env.PUBLIC_URL + `/product.jpg`} width={"100%"} />
                 </div>
