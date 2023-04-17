@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Items from "./Items";
 import {Container, Row, Col} from "react-bootstrap";
 import {initItems, sortItem} from "../../store/itemSlice";
@@ -8,7 +8,6 @@ import {useDispatch, useSelector} from "react-redux";
 import SelectStyles from "../styles/Select.styles";
 import Loading from "../etcPage/Loading";
 import useTranslate from "../../hooks/useTranslate";
-import {ItemType} from "../../types/stateTypes";
 
 function ListPage() {
     const [isPending, error, getItemApiAsync] = useAsync(getItemsApi);

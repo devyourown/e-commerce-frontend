@@ -80,6 +80,8 @@ let words = [
     ["order low price", "Price Low to High", "가격낮은순"],
     ["order high price", "Price High to Low", "가격높은순"],
     ["order new", "New in", "신상품순"],
+    ["order", "Order", "주문"],
+    ["color", "Color", "색상"],
 ]
 
 function addMeg(){

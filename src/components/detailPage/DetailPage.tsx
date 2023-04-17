@@ -4,16 +4,21 @@ import {useSelector} from "react-redux";
 import {Col, Container, Nav, Row} from "react-bootstrap";
 import Tab from "./Tab"
 import useFade from "../../hooks/useFade";
-import {ButtonStyles} from "../styles/Button.styles";
+import {ButtonStyles, Inner, Outer} from "../styles/Button.styles";
 import LabelStyles from "../styles/Label.styles";
 import useAsync from "../../hooks/useAsync";
 import {getItemApi} from "../../api";
 import {ItemType, RootState } from '../../types/types';
+import useTranslate from "../../hooks/useTranslate";
+import ColorList from "./ColorList";
+
+
 
 function DetailPage() {
     const {fade} = useFade("");
     const items = useSelector((state : RootState) => state.items);
-    let {id} = useParams() as {id : string};
+    const {id} = useParams() as {id : string};
+    const translate = useTranslate();
     const [isPending, error, getItemApiAsync] = useAsync(getItemApi);
     const [item, setItem] = useState<ItemType>({
         id: 0,
@@ -48,10 +53,8 @@ function DetailPage() {
                     <h4 className="pt-5">{item.title}</h4>
                     <p>{item.content}</p>
                     <p>{item.price}</p>
-                    <div style={{paddingTop : "10px", paddingBottom : "20px"}}>
-                        <LabelStyles>컬러 : </LabelStyles>
-                    </div>
-                    <ButtonStyles style={{width : "100%"}}>주문</ButtonStyles>
+                    <ColorList  colors={item.colors} />
+                    <ButtonStyles style={{width : "100%"}}>{translate("order")}</ButtonStyles>
                 </Col>
             </Row>
             <Row>
