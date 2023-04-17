@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import "./MainPage.css"
 import useFade from "../hooks/useFade";
-import DivStyles from "./styles/Div.styles";
+import {DivStyles} from "./styles/Div.styles";
 
 
 function MainPage() {

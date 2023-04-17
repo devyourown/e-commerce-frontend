@@ -82,6 +82,7 @@ let words = [
     ["order new", "New in", "신상품순"],
     ["order", "Order", "주문"],
     ["color", "Color", "색상"],
+    ["size", "Size", "사이즈"],
 ]
 
 function addMeg(){

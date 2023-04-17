@@ -4,13 +4,13 @@ import {useSelector} from "react-redux";
 import {Col, Container, Nav, Row} from "react-bootstrap";
 import Tab from "./Tab"
 import useFade from "../../hooks/useFade";
-import {ButtonStyles, Inner, Outer} from "../styles/Button.styles";
-import LabelStyles from "../styles/Label.styles";
+import {ButtonStyles} from "../styles/Button.styles";
 import useAsync from "../../hooks/useAsync";
 import {getItemApi} from "../../api";
 import {ItemType, RootState } from '../../types/types';
 import useTranslate from "../../hooks/useTranslate";
 import ColorList from "./ColorList";
+import SizeList from "./SizeList";
 
 
 
@@ -54,6 +54,7 @@ function DetailPage() {
                     <p>{item.content}</p>
                     <p>{item.price}</p>
                     <ColorList  colors={item.colors} />
+                    <SizeList sizes={item.sizes}/>
                     <ButtonStyles style={{width : "100%"}}>{translate("order")}</ButtonStyles>
                 </Col>
             </Row>

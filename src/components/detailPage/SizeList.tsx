@@ -1,18 +1,16 @@
 import React, {useState} from 'react';
-import {Inner, Outer} from "../styles/Div.styles";
 import LabelStyles from "../styles/Label.styles";
 import useTranslate from "../../hooks/useTranslate";
+import {Button} from "react-bootstrap";
+import {SizeButtonStyles} from "../styles/Button.styles";
 
-function Color({color, isSelected} : {color : string, isSelected : boolean}) {
-
+function Size({size, isSelected} : {size : string, isSelected : boolean}) {
     return (
-        <Outer style={isSelected ? {border : "1px solid black"} : {border : "1px solid #cccccc"}}>
-            <Inner color={color}> </Inner>
-        </Outer>
+        <SizeButtonStyles style={{backgroundColor : "#eeeee"}}>{size}</SizeButtonStyles>
     )
 }
 
-function ColorList({colors} : {colors : string[]}) {
+function SizeList({sizes} : {sizes : string[]}) {
     const [selectNum, setSelectNum] = useState(-1);
     const translate = useTranslate();
 
@@ -22,14 +20,14 @@ function ColorList({colors} : {colors : string[]}) {
     }
 
     return (
-        <div style={{paddingTop : "20px", paddingBottom : "20px"}}>
-            <LabelStyles>{translate("color")} : {colors[selectNum]}</LabelStyles>
+        <div style={{paddingTop : "5px", paddingBottom : "20px"}}>
+            <LabelStyles>{translate("size")} : {sizes[selectNum]}</LabelStyles>
             <ul style={{marginTop : "10px", display: "flex", listStyle: "none", padding: 0 }}>
                 {
-                   colors && colors.map((color, i) => {
+                    sizes && sizes.map((size, i) => {
                         return (
                             <li style={{ display: "inline-block" }} data-id={i} onClick={handleClick} >
-                                <Color isSelected={selectNum === i} color={color}></Color>
+                                <Size isSelected={selectNum === i} size={size}></Size>
                             </li>
                         )
                     })
@@ -39,4 +37,4 @@ function ColorList({colors} : {colors : string[]}) {
     );
 }
 
-export default ColorList;
+export default SizeList;
