@@ -83,7 +83,13 @@ let words = [
     ["order", "Order", "주문"],
     ["color", "Color", "색상"],
     ["size", "Size", "사이즈"],
-    ["wish list", "Add to wishlist", "위시리스트에 추가"]
+    ["cart", "Cart", "장바구니"],
+    ["delete", "Delete", "삭제"],
+    ["count", "Count", "개수"],
+    ["item", "Item", "상품"],
+    ["wish list", "Add to wishlist", "위시리스트에 추가"],
+    ["add to cart", "Add to cart", "장바구니에 추가"],
+    ["need sign in meg", "You need to sign in", "로그인이 필요합니다."]
 ]
 
 function addMeg(){

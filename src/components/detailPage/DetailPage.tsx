@@ -56,7 +56,7 @@ function DetailPage() {
                     <p>{item.price}</p>
                     <ColorList  colors={item.colors} />
                     <SizeList sizes={item.sizes}/>
-                    <ButtonStyles style={{width : "100%", marginTop : "20px", borderRadius: "0", padding: "10px"}}>{translate("order")}</ButtonStyles>
+                    <ButtonStyles style={{width : "100%", marginTop : "20px", borderRadius: "0", padding: "10px"}}>{translate("add to cart")}</ButtonStyles>
                     <WishButton>{translate("wish list")}</WishButton>
                 </Col>
             </Row>

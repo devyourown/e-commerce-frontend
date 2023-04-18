@@ -1,4 +1,5 @@
 import { Gender } from "./types";
+import {ItemOrderType} from "./ItemTypes";
 
 export type ItemType = {
     id  : number,
@@ -18,7 +19,8 @@ export type UserInfoType = {
     username? : string,
     birth? : string,
     gender? : Gender,
-    isSignIn : boolean
+    isSignIn : boolean,
+    cart : ItemOrderType[],
 }
 
 

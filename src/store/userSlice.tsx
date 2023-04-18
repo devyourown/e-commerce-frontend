@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { UserInfoType } from "../types/types";
 
-const initialState : UserInfoType = {isSignIn : false} ;
+const initialState : UserInfoType = {isSignIn : false, cart : []} ;
 
 const userInfo = createSlice({
     name : "user info",

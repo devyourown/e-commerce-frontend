@@ -10,6 +10,7 @@ import NoMatingPage from "./components/etcPage/NoMatingPage";
 import "./App.css"
 import DetailPage from "./components/detailPage/DetailPage";
 import ResetPasswordPage from "./components/singInPage/ResetPasswordPage";
+import CartPage from "./components/cartPage/CartPage";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                   <Route path={"/findPassword/reset"} element={<ResetPasswordPage/>}/>
                   <Route path={"/list"} element={<ListPage/>} />
                   <Route path={"/items/:id"} element={<DetailPage/>}/>
+                  <Route path={"/users/cart"} element={<CartPage/>}/>
                   <Route path={"*"} element={<NoMatingPage/>} />
               </Routes>
           </BrowserRouter>
