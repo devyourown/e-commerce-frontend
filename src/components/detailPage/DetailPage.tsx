@@ -11,6 +11,7 @@ import {ItemType, RootState } from '../../types/types';
 import useTranslate from "../../hooks/useTranslate";
 import ColorList from "./ColorList";
 import SizeList from "./SizeList";
+import WishButton from "./WishButton";
 
 
 
@@ -55,7 +56,8 @@ function DetailPage() {
                     <p>{item.price}</p>
                     <ColorList  colors={item.colors} />
                     <SizeList sizes={item.sizes}/>
-                    <ButtonStyles style={{width : "100%"}}>{translate("order")}</ButtonStyles>
+                    <ButtonStyles style={{width : "100%", marginTop : "20px", borderRadius: "0", padding: "10px"}}>{translate("order")}</ButtonStyles>
+                    <WishButton>{translate("wish list")}</WishButton>
                 </Col>
             </Row>
             <Row>

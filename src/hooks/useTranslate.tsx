@@ -83,6 +83,7 @@ let words = [
     ["order", "Order", "주문"],
     ["color", "Color", "색상"],
     ["size", "Size", "사이즈"],
+    ["wish list", "Add to wishlist", "위시리스트에 추가"]
 ]
 
 function addMeg(){
