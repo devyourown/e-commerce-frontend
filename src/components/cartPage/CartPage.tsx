@@ -1,45 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import {Button, Container, Form, Table} from "react-bootstrap";
 import useTranslate from "../../hooks/useTranslate";
-import {useSelector} from "react-redux";
-import {RootState} from "../../types/stateTypes";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState, SetOrderCountType} from "../../types/stateTypes";
 import {useNavigate} from "react-router-dom";
 import {DivStyles} from "../styles/Div.styles";
 import {ItemOrderType} from "../../types/ItemTypes";
-import {ButtonStyles, CountButtonStyles} from "../styles/Button.styles";
-import "./CartPagem.css"
-
-function Row({order, i} : {order : ItemOrderType, i :number }) {
-    const translate = useTranslate();
-
-    const handleCountIncrease = () => {
-
-    }
-
-    return (
-        <tr  key={i}>
-            <td>{order.item.id}</td>
-            <td><Form.Check
-                type={"checkbox"}
-                id={`default-checkbox`}
-            /></td>
-            <td className={"item"}>
-                <div className={"item-img"} ><img src={"/product.jpg"}/></div>
-                <div className={"item-content"}>
-                    <div>{order.item.title}</div>
-                    <div className={"item-color"}>{translate("color")} : {order.color}</div>
-                </div>
-            </td>
-            <td className={"size center"}>{order.size}</td>
-            <td className={"count center"}>
-                <CountButtonStyles >-</CountButtonStyles>
-                <input className={"input center"} value={order.count}/>
-                <CountButtonStyles onClick={handleCountIncrease}>+</CountButtonStyles>
-            </td>
-            <td><ButtonStyles>{translate("delete")}</ButtonStyles></td>
-        </tr>
-    )
-}
+import "./CartPage.css"
+import Row from './Row';
 
 function CartPage() {
 
@@ -76,7 +44,7 @@ function CartPage() {
                 <tbody>
                 {
                     cart.length <= 0 ? <td>장바구니가 비어있습니다. </td> : cart.map((order, i) => (
-                        <Row order={order} i={i}/>
+                        <Row key={order.id} order={order} i={i} />
                     ))
                 }
                 </tbody>

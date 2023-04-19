@@ -23,6 +23,11 @@ export type UserInfoType = {
     cart : ItemOrderType[],
 }
 
+export type SetOrderCountType = {
+    id : number,
+    count : number
+}
+
 export type RootState = {
     items: ItemType[];
     userInfo : UserInfoType;

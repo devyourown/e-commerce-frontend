@@ -56,3 +56,11 @@ export const SizeButtonStyles = styled.button`
     border: 1px solid #969696;
   }
 `
+
+export const CountButtonStyles = styled.button`
+  width: 30px;
+  height: 30px;
+  font-size: 100%;
+  padding: 0;
+  
+`
