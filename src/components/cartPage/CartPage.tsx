@@ -6,28 +6,36 @@ import {RootState} from "../../types/stateTypes";
 import {useNavigate} from "react-router-dom";
 import {DivStyles} from "../styles/Div.styles";
 import {ItemOrderType} from "../../types/ItemTypes";
-import {ButtonStyles} from "../styles/Button.styles";
-import "./CartPage.css"
+import {ButtonStyles, CountButtonStyles} from "../styles/Button.styles";
+import "./CartPagem.css"
 
 function Row({order, i} : {order : ItemOrderType, i :number }) {
     const translate = useTranslate();
 
+    const handleCountIncrease = () => {
+
+    }
+
     return (
-        <tr key={i}>
+        <tr  key={i}>
             <td>{order.item.id}</td>
             <td><Form.Check
                 type={"checkbox"}
                 id={`default-checkbox`}
             /></td>
             <td className={"item"}>
-                <div><img src={"/product.jpg"} className={"item-img"} /></div>
+                <div className={"item-img"} ><img src={"/product.jpg"}/></div>
                 <div className={"item-content"}>
                     <div>{order.item.title}</div>
                     <div className={"item-color"}>{translate("color")} : {order.color}</div>
                 </div>
             </td>
-            <td>{order.size}</td>
-            <td>{order.count}</td>
+            <td className={"size center"}>{order.size}</td>
+            <td className={"count center"}>
+                <CountButtonStyles >-</CountButtonStyles>
+                <input className={"input center"} value={order.count}/>
+                <CountButtonStyles onClick={handleCountIncrease}>+</CountButtonStyles>
+            </td>
             <td><ButtonStyles>{translate("delete")}</ButtonStyles></td>
         </tr>
     )

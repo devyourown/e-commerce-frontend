@@ -18,4 +18,4 @@ export type singUpInfo = {
 export type {FindCode, ResponseInfo} from "./apiTypes";
 export type {SingInInfo, FindPasswordInfo} from "./signInTypes"
 export type {ItemProps} from "./ItemTypes"
-export type {ItemType, CartType, UserInfoType, RootState} from "./stateTypes"
+export type {ItemType, UserInfoType, RootState} from "./stateTypes"

@@ -9,6 +9,10 @@ const userInfo = createSlice({
     reducers : {
         setUser(state, action : PayloadAction<UserInfoType>) {
             return action.payload;
+        },
+        addOrderCount(state, action : PayloadAction<number>) {
+            const orderId = action.payload;
+            
         }
     }
 })

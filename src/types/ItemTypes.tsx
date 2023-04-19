@@ -5,6 +5,7 @@ export type ItemProps = {
 }
 
 export type ItemOrderType = {
+    "id" : number;
     "item" : ItemType;
     "size" : string;
     "color" : string;
