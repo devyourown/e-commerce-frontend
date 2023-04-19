@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom";
 import {DivStyles} from "../styles/Div.styles";
 import {ItemOrderType} from "../../types/ItemTypes";
 import {ButtonStyles} from "../styles/Button.styles";
+import "./CartPage.css"
 
 function Row({order, i} : {order : ItemOrderType, i :number }) {
     const translate = useTranslate();
@@ -18,9 +19,12 @@ function Row({order, i} : {order : ItemOrderType, i :number }) {
                 type={"checkbox"}
                 id={`default-checkbox`}
             /></td>
-            <td style={{display : "flex", height : "100px"}}>
-                <div><img src={"/product.jpg"} style={{flex : 1, width : "100%", height : "100%"}} /></div>
-                <div style={{flex : 1, }}>{order.item.title}</div>
+            <td className={"item"}>
+                <div><img src={"/product.jpg"} className={"item-img"} /></div>
+                <div className={"item-content"}>
+                    <div>{order.item.title}</div>
+                    <div className={"item-color"}>{translate("color")} : {order.color}</div>
+                </div>
             </td>
             <td>{order.size}</td>
             <td>{order.count}</td>
