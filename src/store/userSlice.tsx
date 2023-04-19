@@ -17,9 +17,14 @@ const userInfo = createSlice({
             if (find) {
                 find.count = count;
             }
+        },
+        deleteOrder(state, action : PayloadAction<number>) {
+            const id = action.payload;
+            const filter = state.cart.filter(order => order.id !== id);
+            return {...state, cart : filter};
         }
     }
 })
-export let {setUser, setOrderCount} = userInfo.actions;
+export let {setUser, setOrderCount, deleteOrder} = userInfo.actions;
 
 export default  userInfo

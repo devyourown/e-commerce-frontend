@@ -3,12 +3,11 @@ import {ItemOrderType} from "../../types/ItemTypes";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState, SetOrderCountType} from "../../types/stateTypes";
 import useTranslate from "../../hooks/useTranslate";
-import {setOrderCount} from "../../store/userSlice";
+import {deleteOrder, setOrderCount} from "../../store/userSlice";
 import {Form} from "react-bootstrap";
 import {ButtonStyles, CountButtonStyles} from "../styles/Button.styles";
 
 function Row({order, i} : {order : ItemOrderType, i :number }) {
-    const userInfo = useSelector((state : RootState) => state.userInfo);
     const translate = useTranslate();
     const dispatch = useDispatch();
 
@@ -17,14 +16,12 @@ function Row({order, i} : {order : ItemOrderType, i :number }) {
         dispatch(setOrderCount(info))
 
     }
-
     const handleCountDecrease = () => {
-        if (order.count === 0) return;
+        if (order.count === 1) return;
         const info : SetOrderCountType = {id : order.id, count : order.count - 1};
         dispatch(setOrderCount(info))
     }
-
-    const handleInputChange = (e : ChangeEvent<HTMLInputElement>) => {
+    const handleCountInputChange = (e : ChangeEvent<HTMLInputElement>) => {
         const inputValue: string = e.target.value;
         const numericValue: number = isNaN(Number(inputValue)) ? 1 : Number(inputValue);
         e.target.value = numericValue.toString();
@@ -32,6 +29,9 @@ function Row({order, i} : {order : ItemOrderType, i :number }) {
         if (numericValue === 0) return;
         const info : SetOrderCountType = {id : order.id, count : numericValue};
         dispatch(setOrderCount(info))
+    }
+    const handleDeleteButton = () => {
+        dispatch(deleteOrder(order.id));
     }
 
     return (
@@ -50,11 +50,11 @@ function Row({order, i} : {order : ItemOrderType, i :number }) {
             </td>
             <td className={"size center"}>{order.size}</td>
             <td className={"count center"}>
-                <CountButtonStyles onClick={handleCountDecrease}>-</CountButtonStyles>
-                <input type={"text"} className={"input center"} value={order.count} onChange={handleInputChange}/>
+                <CountButtonStyles disabled={order.count === 1} onClick={handleCountDecrease}>-</CountButtonStyles>
+                <input type={"text"} className={"input center"} value={order.count} onChange={handleCountInputChange}/>
                 <CountButtonStyles onClick={handleCountIncrease}>+</CountButtonStyles>
             </td>
-            <td><ButtonStyles>{translate("delete")}</ButtonStyles></td>
+            <td><ButtonStyles onClick={handleDeleteButton}>{translate("delete")}</ButtonStyles></td>
         </tr>
     )
 }
