@@ -18,7 +18,7 @@ function CartPage() {
 
     useEffect(() => {
         if (!userInfo.isSignIn) {
-            alert(translate("need sign in meg"));
+            alert(translate("need sign in msg"));
             navigate("/signIn");
         }
     }, [])

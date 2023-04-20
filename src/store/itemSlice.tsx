@@ -20,7 +20,7 @@ const items = createSlice({
             return action.payload;
         },
 
-        orderItem : (state, action : PayloadAction<string>) => {
+        sortItem : (state, action : PayloadAction<string>) => {
             let options = ["id", "title", "price-ascending", "price-descending", "recommend"];
             if (!options.includes(action.payload)) return ;
             if (action.payload === "price-ascending") {
@@ -34,5 +34,5 @@ const items = createSlice({
         }
     }
 })
-export let {addItem, initItems, orderItem: sortItem} = items.actions;
+export let {addItem, initItems, sortItem} = items.actions;
 export default items

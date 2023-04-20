@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {Dispatch, SetStateAction, useState} from 'react';
 import {Inner, Outer} from "../styles/Div.styles";
 import LabelStyles from "../styles/Label.styles";
 import useTranslate from "../../hooks/useTranslate";
+import {ItemOrderType} from "../../types/ItemTypes";
+import {ItemType} from "../../types/stateTypes";
 
 function Color({color, isSelected} : {color : string, isSelected : boolean}) {
 
@@ -12,13 +14,19 @@ function Color({color, isSelected} : {color : string, isSelected : boolean}) {
     )
 }
 
-function ColorList({colors} : {colors : string[]}) {
+function ColorList({colors, setOrder} : {colors : string[], setOrder : Dispatch<SetStateAction<ItemOrderType>>}) {
     const [selectNum, setSelectNum] = useState(-1);
     const translate = useTranslate();
 
     const handleClick = (e : React.MouseEvent<HTMLLIElement>) => {
         const id = Number(e.currentTarget.dataset.id);
         setSelectNum(id);
+        setOrder(prevState => {
+            let newState : ItemOrderType;
+            newState = {...prevState};
+            newState["color"] = colors[id];
+            return (newState);
+        })
     }
 
     return (

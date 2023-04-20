@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {Dispatch, SetStateAction, useState} from 'react';
 import LabelStyles from "../styles/Label.styles";
 import useTranslate from "../../hooks/useTranslate";
 import {Button} from "react-bootstrap";
 import {SizeButtonStyles} from "../styles/Button.styles";
+import {ItemOrderType} from "../../types/ItemTypes";
 
 function Size({size, isSelected} : {size : string, isSelected : boolean}) {
     return (
@@ -10,13 +11,19 @@ function Size({size, isSelected} : {size : string, isSelected : boolean}) {
     )
 }
 
-function SizeList({sizes} : {sizes : string[]}) {
+function SizeList({sizes, setOrder} : {sizes : string[], setOrder : Dispatch<SetStateAction<ItemOrderType>>}) {
     const [selectNum, setSelectNum] = useState(-1);
     const translate = useTranslate();
 
     const handleClick = (e : React.MouseEvent<HTMLLIElement>) => {
         const id = Number(e.currentTarget.dataset.id);
         setSelectNum(id);
+        setOrder(prevState => {
+            let newState : ItemOrderType;
+            newState = {...prevState};
+            newState["size"] = sizes[id];
+            return (newState);
+        })
     }
 
     return (
