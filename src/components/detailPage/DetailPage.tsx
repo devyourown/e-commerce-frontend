@@ -73,6 +73,15 @@ function DetailPage() {
             alert(translate("set size msg"));
             return ;
         }
+        function getNewId () {
+            while (true) {
+                const id = Math.floor(Math.random() * 9000) + 1000;
+                if (!userInfo.cart.map(order => order.id).includes(id)) {
+                    return id;
+                }
+            }
+        }
+        order.id = getNewId();
 
         dispatch(addOrder(order));
         if (window.confirm(translate("add to cart msg"))) {

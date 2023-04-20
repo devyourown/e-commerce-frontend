@@ -25,19 +25,28 @@ const userInfo = createSlice({
             return {...state, cart : filter};
         },
         addOrder(state, action : PayloadAction<ItemOrderType>) {
-            const order = action.payload;
+            const newOrder = action.payload;
 
-            function getNewId () {
-                while (true) {
-                    const id = Math.floor(Math.random() * 9000) + 1000;
-                    if (!state.cart.map(order => order.id).includes(id)) {
-                        return id;
-                    }
-                }
+            const sameOrder = state.cart.find(order =>
+                order.item.id === newOrder.item.id &&
+                order.color===newOrder.color &&
+                order.size === newOrder.size);
+            if (sameOrder) {
+                sameOrder.count++;
+                return state;
             }
 
-            if (order.id === -1) order.id = getNewId();
-            state.cart.push(order);
+            // function getNewId () {
+            //     while (true) {
+            //         const id = Math.floor(Math.random() * 9000) + 1000;
+            //         if (!state.cart.map(order => order.id).includes(id)) {
+            //             return id;
+            //         }
+            //     }
+            // }
+            //
+            // if (newOrder.id === -1) newOrder.id = getNewId();
+            state.cart.push(newOrder);
         }
     }
 })
