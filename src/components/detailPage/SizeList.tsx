@@ -26,7 +26,7 @@ function SizeList({sizes} : {sizes : string[]}) {
                 {
                     sizes && sizes.map((size, i) => {
                         return (
-                            <li style={{ display: "inline-즈block" }} data-id={i} onClick={handleClick} >
+                            <li key={i} style={{ display: "inline-즈block" }} data-id={i} onClick={handleClick} >
                                 <Size isSelected={selectNum === i} size={size}></Size>
                             </li>
                         )

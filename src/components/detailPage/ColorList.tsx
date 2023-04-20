@@ -28,7 +28,7 @@ function ColorList({colors} : {colors : string[]}) {
                 {
                    colors && colors.map((color, i) => {
                         return (
-                            <li style={{ display: "inline-block" }} data-id={i} onClick={handleClick} >
+                            <li key={i} style={{ display: "inline-block" }} data-id={i} onClick={handleClick} >
                                 <Color isSelected={selectNum === i} color={color}></Color>
                             </li>
                         )
