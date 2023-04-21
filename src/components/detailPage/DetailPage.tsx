@@ -82,6 +82,7 @@ function DetailPage() {
             }
         }
         order.id = getNewId();
+        order.item = item; // initialState 에서 item 이 초기값이여서 다시 할당
 
         dispatch(addOrder(order));
         if (window.confirm(translate("add to cart msg"))) {
