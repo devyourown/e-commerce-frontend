@@ -4,6 +4,7 @@ import "./Items.css"
 import {NavLink} from "react-router-dom";
 import useFade from "../../hooks/useFade";
 import { ItemProps, ItemType, RootState } from '../../types/types';
+import useExchange from "../../hooks/useExchange";
 
 
 
@@ -17,6 +18,7 @@ function getLinkStyle() {
 
 
 function Item({item} : ItemProps){
+    const exchange = useExchange();
 
     return (
         <>
@@ -28,7 +30,7 @@ function Item({item} : ItemProps){
                 <div >
                     <div className={"title"}><span>{item.title}</span></div>
                     <div className={"content"}><span>{item.content}</span></div>
-                    <div className={"price"}><span>{item.price}</span></div>
+                    <div className={"price"}><span>{exchange(item.price)}</span></div>
                 </div>
                 </NavLink>
             </div>

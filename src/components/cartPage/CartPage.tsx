@@ -26,6 +26,7 @@ function CartPage() {
     return (
         <Container style={{paddingTop : "30px"}}>
             <h2 style={{padding : "30px"}}>{translate("cart")}</h2>
+            <div className={"total-count"}>{translate("total count")} : {cart.length}</div>
             <DivStyles />
             <Table striped bordered hover>
                 <thead>
@@ -38,6 +39,7 @@ function CartPage() {
                         <th>{translate("item")}</th>
                         <th>{translate("size")}</th>
                         <th>{translate("count")}</th>
+                        <th>{translate("price")}</th>
                         <th>{translate("delete")}</th>
                     </tr>
                 </thead>

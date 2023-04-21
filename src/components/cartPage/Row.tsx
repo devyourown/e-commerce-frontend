@@ -6,10 +6,12 @@ import useTranslate from "../../hooks/useTranslate";
 import {deleteOrder, setOrderCount} from "../../store/userSlice";
 import {Form} from "react-bootstrap";
 import {ButtonStyles, CountButtonStyles} from "../styles/Button.styles";
+import useExchange from "../../hooks/useExchange";
 
 function Row({order, i} : {order : ItemOrderType, i :number }) {
     const translate = useTranslate();
     const dispatch = useDispatch();
+    const exchange = useExchange();
 
     const handleCountIncrease = () => {
         const info : SetOrderCountType = {id : order.id, count : order.count + 1};
@@ -54,6 +56,7 @@ function Row({order, i} : {order : ItemOrderType, i :number }) {
                 <input type={"text"} className={"input center"} value={order.count} onChange={handleCountInputChange}/>
                 <CountButtonStyles onClick={handleCountIncrease}>+</CountButtonStyles>
             </td>
+            <td className={"center"}>{exchange(order.item.price * order.count)}</td>
             <td><ButtonStyles onClick={handleDeleteButton}>{translate("delete")}</ButtonStyles></td>
         </tr>
     )

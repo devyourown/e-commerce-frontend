@@ -15,16 +15,13 @@ import WishButton from "./WishButton";
 import "./DetailPage.css"
 import {ItemOrderType} from "../../types/ItemTypes";
 import { addOrder } from '../../store/userSlice';
+import useExchange from "../../hooks/useExchange";
 
 
 function DetailPage() {
     const {fade} = useFade("");
     const items = useSelector((state : RootState) => state.items);
     const userInfo = useSelector((state : RootState) => state.userInfo);
-    const {id} = useParams() as {id : string};
-    const translate = useTranslate();
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
     const [isPending, error, getItemApiAsync] = useAsync(getItemApi);
     const [item, setItem] = useState<ItemType>({
         id: 0,
@@ -43,6 +40,11 @@ function DetailPage() {
         color : "",
         count : 1
     });
+    const {id} = useParams() as {id : string};
+    const translate = useTranslate();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const exchange = useExchange();
     const url = `/product.jpg`;
 
     useEffect(() => {
@@ -110,7 +112,7 @@ function DetailPage() {
                 <Col className="content-info col-md-6">
                     <h4 className="pt-5">{item.title}</h4>
                     <p>{item.content}</p>
-                    <p>{item.price}</p>
+                    <p>{exchange(item.price)}</p>
                     <ColorList setOrder={setOrder}  colors={item.colors} />
                     <SizeList setOrder={setOrder} sizes={item.sizes}/>
                     <ButtonStyles style={{
