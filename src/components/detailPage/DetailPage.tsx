@@ -55,7 +55,7 @@ function DetailPage() {
             setItem(result);
         }
     }, [])
-    const handleCartButton = async() => {
+    const authCheck = async() => {
         // TODO 방식 수정 가능.
         // const data = await authenticateApi("cart");
         const data = {success : true};
@@ -64,7 +64,6 @@ function DetailPage() {
             navigate("/signIn");
             return ;
         }
-
         if (order.color === "") {
             alert(translate("set color msg"));
             return ;
@@ -73,6 +72,11 @@ function DetailPage() {
             alert(translate("set size msg"));
             return ;
         }
+    }
+    const handleCartButton = async() => {
+
+        await authCheck();
+
         function getNewId () {
             while (true) {
                 const id = Math.floor(Math.random() * 9000) + 1000;
@@ -90,6 +94,12 @@ function DetailPage() {
         }
 
     }
+
+    // TODO 추구구현.
+    // const handleWishButton = async() => {
+    //     await authCheck();
+    //
+    // }
 
     return (
         <Container className={"content start " + fade}>

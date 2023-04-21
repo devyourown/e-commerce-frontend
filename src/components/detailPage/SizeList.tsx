@@ -6,8 +6,16 @@ import {SizeButtonStyles} from "../styles/Button.styles";
 import {ItemOrderType} from "../../types/ItemTypes";
 
 function Size({size, isSelected} : {size : string, isSelected : boolean}) {
+    const sizeClickStyle = {
+        backgroundColor : "#eeeee",
+        border : isSelected ? "1px solid black" : "undefined"
+    }
+    const sizeNonClickStyle = {
+        backgroundColor : "#eeeee",
+    }
+
     return (
-        <SizeButtonStyles style={{backgroundColor : "#eeeee"}}>{size}</SizeButtonStyles>
+        <SizeButtonStyles style={isSelected ? sizeClickStyle : sizeNonClickStyle}>{size}</SizeButtonStyles>
     )
 }
 
@@ -33,7 +41,7 @@ function SizeList({sizes, setOrder} : {sizes : string[], setOrder : Dispatch<Set
                 {
                     sizes && sizes.map((size, i) => {
                         return (
-                            <li key={i} style={{ display: "inline-즈block" }} data-id={i} onClick={handleClick} >
+                            <li key={i} style={{ display: "inline-block" }} data-id={i} onClick={handleClick} >
                                 <Size isSelected={selectNum === i} size={size}></Size>
                             </li>
                         )
