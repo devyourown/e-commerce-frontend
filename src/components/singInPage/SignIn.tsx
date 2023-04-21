@@ -10,7 +10,8 @@ import useTranslate from "../../hooks/useTranslate";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {setUser} from "../../store/userSlice";
-import {UserInfoType} from "../../store/store";
+import { UserInfoType } from "../../types/types";
+import axios from "axios";
 
 function SignIn() {
 
@@ -39,6 +40,7 @@ function SignIn() {
         // 토근 로컬스토리지에 추가.
         const token : string = result.token;
         localStorage.setItem("token", token);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
         // 유저 정보 리덕스에 추가.
         const userInfo : UserInfoType = result;

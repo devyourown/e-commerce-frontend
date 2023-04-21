@@ -6,7 +6,7 @@ import {Container, Row, Col} from "react-bootstrap";
 import useTranslate from "../../hooks/useTranslate";
 import LocaleSelect from "./LocaleSelect";
 import {useSelector} from "react-redux";
-import {RootState, UserInfoType} from "../../store/store";
+import {RootState, UserInfoType } from '../../types/types';
 
 function Header() {
     const translate = useTranslate();
@@ -25,6 +25,7 @@ function Header() {
                         {!userInfo.isSignIn && <Link to={"/signIn"}><div className={"header-left-item"}>{translate("sign in")}</div></Link>}
                         {!userInfo.isSignIn && <Link to={"/signUp"}><div className={"header-left-item"}>{translate("sign up")}</div></Link>}
                         {userInfo.isSignIn && <div className={"header-left-item"}>{userInfo.username}{translate("welcome-msg")}</div>}
+                        {userInfo.isSignIn && <Link to={"/users/cart"}><div className={"header-left-item"}>{translate("cart")}</div></Link>}
                     </Col>
                 </Row>
             </Container>

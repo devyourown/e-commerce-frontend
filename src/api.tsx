@@ -1,39 +1,10 @@
 import axios, { AxiosResponse } from "axios";
-import {Simulate} from "react-dom/test-utils";
-
+import { SingInInfo, singUpInfo, FindPasswordInfo, FindCode } from "./types/types";
 
 const BASE_URL = 'http://localhost:3000';
 
-export type SingInInfo = {
-    email: string;
-    password: string;
-}
-
-export enum Gender {
-    Male,
-    Female,
-    Other,
-}
-
-export type singUpInfo = {
-    email : string,
-    username : string,
-    password : string,
-    confirmPassword : string,
-    birth : string,
-    gender : Gender,
-}
-
-export type FindCode = {
-    code : string,
-}
-
-export type ResponseInfo = {
-    success : boolean,
-    status? : number,
-}
-
-
+axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem("token")}`;
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 export async function singInApi(signInInfo : SingInInfo) : Promise<AxiosResponse>{
     try {
         // const response: AxiosResponse = await axios.post(`${BASE_URL}/users`, signInInfo);
@@ -55,13 +26,9 @@ export async function signUpApi(singUpInfo : singUpInfo) {
     }
 }
 
-export type FindPasswordInfo = {
-    email : string,
-}
-
 export async function findPasswordApi(findPasswordInfo : FindPasswordInfo) {
     try {
-        const response: AxiosResponse = await axios.post(`${BASE_URL}/find`, findPasswordInfo); // TODO api 수정 필요
+        const response: AxiosResponse = await axios.post(`${BASE_URL}/users/find/password`, findPasswordInfo); // TODO api 수정 필요
         return response.data;
     } catch (error) {
         console.log(error);
@@ -69,23 +36,46 @@ export async function findPasswordApi(findPasswordInfo : FindPasswordInfo) {
     }
 }
 
-export async function sendCodeApi(code : FindCode) {
+export async function sendCodeApi(info : FindCode) {
     try {
-        const response : AxiosResponse = await axios.post(`${BASE_URL}/find/code`, code);
-        return response.data
+        const response : AxiosResponse = await axios.post(`${BASE_URL}/users/find/password/code`, info);
+        return response.data;
     } catch (error) {
         console.log(error);
         throw error;
     }
 }
-
 
 export async function getItemsApi() {
     try {
-        const response = await axios.get(`http://localhost:3000/items`);
+        const response = await axios.get(`${BASE_URL}/items`);
         return response.data;
     } catch (error) {
         console.log(error);
         throw error;
     }
+}
+
+export async function getItemApi(id : string) {
+    try {
+        const response = await axios.get(`${BASE_URL}/items/${id}`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function authenticateApi(url : string) {
+    try {
+        const response = await axios.get(`${BASE_URL}/auth/${url}`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function resetPasswordApi() {
+
 }

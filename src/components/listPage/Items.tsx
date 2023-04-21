@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
-import {RootState, ItemType} from "../../store/store";
 import "./Items.css"
 import {NavLink} from "react-router-dom";
 import useFade from "../../hooks/useFade";
+import { ItemProps, ItemType, RootState } from '../../types/types';
+import useExchange from "../../hooks/useExchange";
 
-type ItemProps = {
-    item : ItemType
-}
+
 
 function getLinkStyle() {
     return {
@@ -19,18 +18,19 @@ function getLinkStyle() {
 
 
 function Item({item} : ItemProps){
+    const exchange = useExchange();
 
     return (
         <>
             <div className={"col-md-4 item"} style={{textAlign : "center"}}>
-                <NavLink to={`/item/${item.id}`} style={getLinkStyle()}>
+                <NavLink to={`/items/${item.id}`} style={getLinkStyle()}>
                 <div>
                     <img src={process.env.PUBLIC_URL + `/product.jpg`} width={"100%"} />
                 </div>
                 <div >
                     <div className={"title"}><span>{item.title}</span></div>
                     <div className={"content"}><span>{item.content}</span></div>
-                    <div className={"price"}><span>{item.price}</span></div>
+                    <div className={"price"}><span>{exchange(item.price)}</span></div>
                 </div>
                 </NavLink>
             </div>

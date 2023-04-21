@@ -42,3 +42,25 @@ export const SingInButtonStyles = styled.button`
   }
 `
 
+export const SizeButtonStyles = styled.button`
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #d0d0d0;
+  //border-radius: 8px;
+  width: 100px;
+  height: 40px;
+  margin: 3px;
+
+  &:hover,
+  &:active {
+    border: 1px solid #969696;
+  }
+`
+
+export const CountButtonStyles = styled.button`
+  width: 30px;
+  height: 30px;
+  font-size: 100%;
+  padding: 0;
+  
+`

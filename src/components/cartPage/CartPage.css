@@ -1,0 +1,41 @@
+.center {
+    text-align: center;
+}
+.item {
+    display: flex;
+
+}
+
+.item-img {
+    flex : 1;
+    height: 80px;
+    width: 10px;
+}
+
+.item-img img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.item-content {
+    flex : 1;
+    margin: 10px;
+}
+
+.item-content .item-color {
+    font-size: 13px;
+    color: #717172;
+}
+
+.count {
+    height: 100%;
+    width: 200px;
+}
+
+.count .input {
+    width: 30px;
+}
+
+.total-count {
+    padding-left: 30px;
+}

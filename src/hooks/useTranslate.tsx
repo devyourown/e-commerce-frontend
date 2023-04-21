@@ -29,7 +29,7 @@ const dict: LocaleDict = {
         "find password" : "Forgot your password?",
 
         "reset password" : "Reset password",
-        "reset message" : "Wㄷ will send you an email with a code to set up a new password",
+        "reset message" : "We will send you an email with a code to set up a new password",
         "code send message" : "Place input your code",
         "reset code button" : "Send reset code",
         "back to sign in" : "Back to Sign in",
@@ -74,8 +74,39 @@ const dict: LocaleDict = {
     },
 }
 
+let words = [
+    ["enter new password", "Please Enter your new password.", "새 비밀번호를 입력하세요."],
+    ["order recommend", "Recommended", "추천순"],
+    ["order low price", "Price Low to High", "가격낮은순"],
+    ["order high price", "Price High to Low", "가격높은순"],
+    ["order new", "New in", "신상품순"],
+    ["order", "Order", "주문"],
+    ["color", "Color", "색상"],
+    ["size", "Size", "사이즈"],
+    ["cart", "Cart", "장바구니"],
+    ["delete", "Delete", "삭제"],
+    ["price", "Price", "가격"],
+    ["count", "Count", "개수"],
+    ["total count", "Total count", "전체 수"],
+    ["item", "Item", "상품"],
+    ["wish list", "Add to wishlist", "위시리스트에 추가"],
+    ["add to cart", "Add to cart", "장바구니에 추가"],
+    ["need sign in msg", "You need to sign in", "로그인이 필요합니다."],
+    ["set color msg", "Please select color", "색상을 선택해주세요."],
+    ["set size msg", "Please select size", "사이즈를 선택해주세요."],
+    ["add to cart msg", "The product you selected has been added to your shopping cart. Would you like to move to your shopping cart?", "선택하신 상품이 장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?"]
+]
+
+function addMeg(){
+    words.forEach(([key, en, ko]) => {
+        dict["en"][key] = en;
+        dict["ko"][key] = ko;
+    })
+}
+
 function useTranslate() {
     const locale : string = useLocale();
+    addMeg();
     const translate = (val : string) : string => dict[locale][val] || "";
     return translate;
 }
